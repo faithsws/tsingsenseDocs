@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>系统一览 &mdash; 智能数据采集仪脚本说明  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="智能数据采集仪脚本说明  文档" href="../index.html"/>
+        <link rel="up" title="脚本指导手册" href="index.html"/>
+        <link rel="next" title="函数一览" href="functions.html"/>
+        <link rel="prev" title="脚本指导手册" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 智能数据采集仪脚本说明
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rst_test.html">abc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/index.html">硬件使用手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">脚本指导手册</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">系统一览</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">智能数据采集仪介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">脚本语法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">执行过程</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">函数一览</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../host/index.html">上位机使用手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../host/index.html#id2">索引表</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">智能数据采集仪脚本说明</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">脚本指导手册</a> &raquo;</li>
+      
+    <li>系统一览</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/software/introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>系统一览<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>本文档用于说明天星智联智能数据采集相关系列产品的脚本编写方法。最终版权属北京天星智联科技有限公司所有。</p>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">由于固件版本和系统升级而导致的文档不匹配，天星智联科技不单独进行通知。</p>
+</div>
+<div class="section" id="id2">
+<h2>智能数据采集仪介绍<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>SDL-1000系列基站式数据采集仪是一款多用途低功耗的可以二次开发的数据采集采集仪。通过控制脚本，数据采集仪可以测量多数的水文、气象、环境和工业领域的传感器。</p>
+<p>数据采集仪可以保存60000条数据采集结果。超过60000条数据后，将自动擦除最先保存的数据。</p>
+<p>数据采集仪可以按照预设的时间间隔进行数据采集，也可以按照预设的时间间隔唤醒设备进行数据上传。两种预设间隔独立执行，数据采集仪可以通过多种通信方式将数据上传到指定网站。</p>
+<p>SDL-1000系列基站式数据采集仪，根据通信方式不同，包含以下型号：</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="38%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">序号</th>
+<th class="head">型号</th>
+<th class="head">通信方式</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>SDL-1000W</td>
+<td>WIFI</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>SDL-1000G</td>
+<td>GPRS</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>SDL-1000N</td>
+<td>NBIOT</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>SDL-1000L</td>
+<td>LORA</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>SDL-1000系列数据采集仪采用统一硬件，独立软件的组织方式，可以有效降低硬件采购成本，提高部署简易度，真正实现一款硬件采集任意多种传感器数据并上传。</p>
+<p>硬件安装及电气指标请参考《智能数据采集仪电气说明》。</p>
+<div class="figure align-center">
+<img alt="../_images/top_view1.png" src="../_images/top_view1.png" />
+</div>
+</div>
+<div class="section" id="id3">
+<h2>脚本语法<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>智能数据采集仪运行的脚本采用 <strong>LUA</strong> 语法，参考版本为 <a class="reference external" href="http://www.lua.org/manual/5.2/manual.html">Lua5.2</a> 。</p>
+<p>Lua脚本的最大文件大小为 <strong>16KB</strong> ，如果文件大小超过长度，将无法正确执行，请删除注释或压缩换行。</p>
+<p>脚本不支持io 和 os，请勿引用和使用。</p>
+</div>
+<div class="section" id="id4">
+<h2>执行过程<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="figure align-center">
+<img alt="../_images/exec_flow.jpg" src="../_images/exec_flow.jpg" />
+</div>
+<p>执行描述</p>
+<ol class="arabic simple">
+<li>系统上电启动后，会自动加载脚本。如果脚本存在语法错误将无法正确加载。</li>
+<li>读取配置参数 <code class="docutils literal"><span class="pre">采集间隔</span></code> 。建议采集间隔大于5秒。</li>
+<li>调用函数 <code class="docutils literal"><span class="pre">on_config</span></code> 进行上电后，软件环境初始化。</li>
+<li><code class="docutils literal"><span class="pre">扫描间隔</span></code> 到达后，采集仪唤醒，判断是否到达 <code class="docutils literal"><span class="pre">采集间隔</span></code> 。如果到达 <code class="docutils literal"><span class="pre">采集间隔</span></code> 则执行步骤5，否则继续休眠，重复步骤4.</li>
+<li>到达 <code class="docutils literal"><span class="pre">采集间隔</span></code> 调用函数 <code class="docutils literal"><span class="pre">on_start</span></code> ,按顺序执行语句，直到函数结束并且所有回调函数结束。</li>
+<li>采集仪再次休眠，重复步骤4.</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">采集仪不确定每次执行 on_start的总时间，用户需要自行判断，以确保 <strong>执行时间</strong> 小于 <code class="docutils literal"><span class="pre">采集间隔</span></code> ,否则不能保证每次采集点到达时，正确执行 on_start 。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="functions.html" class="btn btn-neutral float-right" title="函数一览" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="脚本指导手册" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

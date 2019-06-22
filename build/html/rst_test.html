@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>abc &mdash; 智能数据采集仪脚本说明  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="genindex.html"/>
+        <link rel="search" title="搜索" href="search.html"/>
+    <link rel="top" title="智能数据采集仪脚本说明  文档" href="index.html"/>
+        <link rel="next" title="硬件使用手册" href="hardware/index.html"/>
+        <link rel="prev" title="智能数据采集仪使用说明" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 智能数据采集仪脚本说明
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">abc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#def">def</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#asdf">asdf</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/index.html">硬件使用手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/index.html">脚本指导手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host/index.html">上位机使用手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host/index.html#id2">索引表</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">智能数据采集仪脚本说明</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>abc</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/rst_test.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="abc">
+<h1>abc<a class="headerlink" href="#abc" title="永久链接至标题">¶</a></h1>
+<div class="highlight-lua"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="nf">adc</span><span class="p">()</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="def">
+<h2>def<a class="headerlink" href="#def" title="永久链接至标题">¶</a></h2>
+<div class="section" id="asdf">
+<h3>asdf<a class="headerlink" href="#asdf" title="永久链接至标题">¶</a></h3>
+<div class="highlight-lua"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="nf">on_config</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">61</span> <span class="k">do</span>
+        <span class="n">set_global_number</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">pwm_start</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">PWM_1&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_start</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---on start-----&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">())</span>
+    <span class="n">add_data_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">UCHAR&#39;</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>       
+    <span class="n">add_data_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">UCHAR&#39;</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>       
+    <span class="n">add_data_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">BCD_YYMMDDHHMM&#39;</span><span class="p">,</span><span class="n">bcdtime</span><span class="p">())</span>
+
+    <span class="n">bcd_time</span> <span class="o">=</span> <span class="n">bcdtime</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">bcd_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">bcd_time</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>    <span class="c1">--00:00</span>
+        <span class="n">set_global_number</span><span class="p">(</span><span class="mi">61</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">clear today&quot;</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">today_val</span> <span class="o">=</span> <span class="n">get_global_number</span><span class="p">(</span><span class="mi">61</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="mi">60</span> <span class="k">do</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">get_global_number</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">set_global_number</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">val</span><span class="p">)</span>   
+    <span class="k">end</span>
+
+    <span class="n">cnt</span> <span class="o">=</span> <span class="n">pwm_get</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">PWM_1&quot;</span><span class="p">)</span>  <span class="c1">--minute val</span>
+    <span class="n">pwm_set</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">PWM_1&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">minute&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+    <span class="n">set_global_number</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span>
+
+    <span class="n">hour_total</span> <span class="o">=</span> <span class="mi">0</span>          <span class="c1">--hour val</span>
+    <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">60</span> <span class="k">do</span>
+        <span class="n">hour_total</span> <span class="o">=</span> <span class="n">hour_total</span> <span class="o">+</span> <span class="n">get_global_number</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">hour&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hour_total</span><span class="p">)</span>
+    <span class="c1">--set_global_number(0,hour_total)</span>
+
+    <span class="n">today_val</span> <span class="o">=</span> <span class="n">today_val</span> <span class="o">+</span> <span class="n">cnt</span>   <span class="c1">--day val</span>
+    <span class="n">set_global_number</span><span class="p">(</span><span class="mi">61</span><span class="p">,</span><span class="n">today_val</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">today&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">today_val</span><span class="p">)</span>
+ 
+    <span class="c1">--Actual rainfall upload</span>
+    <span class="n">add_data_item</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">SINT&#39;</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span>
+    <span class="n">add_data_item</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">SINT&#39;</span><span class="p">,</span><span class="n">hour_total</span><span class="p">)</span>
+    <span class="n">add_data_item</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">SINT&#39;</span><span class="p">,</span><span class="n">today_val</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>This is a paragraph</p>
+<ul class="last simple">
+<li>Here is a bullet list.</li>
+</ul>
+</div>
+<div class="admonition caution">
+<p class="first admonition-title">警告</p>
+<p>This is a paragraph3</p>
+<ul class="last simple">
+<li>Here is a bullet list.</li>
+</ul>
+</div>
+<div class="admonition danger">
+<p class="first admonition-title">危险</p>
+<p>modify at your own risk!</p>
+<p class="last">sadfasd</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">col 1</th>
+<th class="head">col 2</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Second column of row 1.</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Second column of row 2.
+Second line of paragraph.</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td><ul class="first last simple">
+<li>Second column of row 3.</li>
+<li>Second item in bullet
+list (row 3, column 2).</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>Row 4; column 1 will be empty.</td>
+</tr>
+</tbody>
+</table>
+<p>asdfasdf</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">asdfas</span>
+<span class="c1">#. asdfc</span>
+<span class="c1">#. ddd</span>
+</pre></div>
+</div>
+<p>return</p>
+<dl class="docutils">
+<dt>term1</dt>
+<dd>definition 1.</dd>
+<dt>term2</dt>
+<dd><p class="first">def2</p>
+<p class="last">def3</p>
+</dd>
+<dt>term3</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">classifier one</span><dd>def 3</dd>
+</dl>
+<p>absd <em>asb</em>  <strong>cde</strong> <cite>wdes</cite> <code class="docutils literal"><span class="pre">sddf</span></code></p>
+<p>asdfasd:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">wer</span>
+        <span class="n">sdf</span>
+
+<span class="n">sdfasd</span>
+        <span class="o">--</span><span class="n">adle</span>
+</pre></div>
+</div>
+<p>anantho</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sadf</span>
+</pre></div>
+</div>
+<p>This is an ordinary paragraph, introducing a block quote.</p>
+<blockquote>
+<div><p>&#8220;It is my business to know things.  That is my trade.&#8221;</p>
+<p class="attribution">&mdash;Sherlock Holmes</p>
+</div></blockquote>
+<p>ssssssssssssssssssssss</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">sdfadf
+sdf</div>
+<div class="line">asdfasd</div>
+<div class="line">wwe</div>
+</div>
+</div></blockquote>
+<p>done</p>
+<blockquote>
+<div><blockquote>
+<div>asdfasdfasdf</div></blockquote>
+<p>asdfdff</p>
+<blockquote>
+<div><p>sdfasdf
+ssddd1111</p>
+<p>par2</p>
+<p class="attribution">&mdash;asdfasd</p>
+</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt>sdfas</dt>
+<dd>sdfsd
+sdf333</dd>
+</dl>
+<ul class="simple">
+<li>a</li>
+<li>b</li>
+<li>c<ul>
+<li>e</li>
+<li>f<ul>
+<li>w</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol class="upperalpha simple">
+<li>basd</li>
+<li>cccc</li>
+</ol>
+<p>a. sdf</p>
+<ol class="loweralpha simple" start="3">
+<li>sdf</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hardware/index.html" class="btn btn-neutral float-right" title="硬件使用手册" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="智能数据采集仪使用说明" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

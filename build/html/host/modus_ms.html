@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MODBUS 主从模式使用说明书 &mdash; 智能数据采集仪脚本说明  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="智能数据采集仪脚本说明  文档" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 智能数据采集仪脚本说明
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst_test.html">abc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/index.html">硬件使用手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">脚本指导手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">上位机使用手册</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">智能数据采集仪脚本说明</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>MODBUS 主从模式使用说明书</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/host/modus_ms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="modbus">
+<h1>MODBUS 主从模式使用说明书<a class="headerlink" href="#modbus" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>主从模式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>智能数据采集仪 具备RS422（RS485）接口和RS232接口的主从模式切换功能。</p>
+<p>主模式下，采集仪通过RS422接口或RS232接口连接外部传感器，可以利用脚本中的rs422_send、modbus_send、rs232_send函数对传感器数据进行读取。</p>
+<p>从模式下，采集仪通过RS422接口或RS232接口连接PC。使用串口AT命令，可以选择使用RS422或者RS232接口中的一种方式。PC端上位机（比如Modbus Poll）可以通过Modbus RTU协议对采集上的数据（脚本最后一次执行保存的数据）进行读取。从模式下，对应选择接口的主模式函数（rs422_send、modbus_send、rs232_send函数）失效。</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">目前仅支持 RS422接口 从模式功能。</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>模式切换和设置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>主模式<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>利用串口或者上位机输入AT命令对基站式采集仪进行设置，以串口助手进行设置为例，首先打开串口助手，进行设备连接（正确选择串口号），波特率、数据位、奇偶校验位、停止位。并选择发送新行，打开串口。</p>
+<p>在串口助手发送区输入 <code class="docutils literal"><span class="pre">AT+SETSLAVE=none,115200_8N1,1</span></code> 命令进入主模式，然后点击【发送】按钮，在接收区返回OK表示设置成功。其中none代表主模式、115200代表波特率、8代表数据位、N代表奇偶校验位、1代表停止位，最后的1是代表地址。主模式下，波特率和地址无效。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/modbus_master_set.png" src="../_images/modbus_master_set.png" />
+</div>
+</div></blockquote>
+<p>在串口助手发送区输入AT+GETSLAVE=? 命令可以得到当前设置状态，点击【发送】按钮进行发送。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3>从模式<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>利用串口或者上位机输入AT命令对基站式采集仪进行设置。以串口助手进行设置为例，首先打开串口助手，进行设备连接（正确选择串口号），波特率、数据位、奇偶校验位、停止位。在串口助手底部输入 <code class="docutils literal"><span class="pre">AT+SETSLAVE=485,115200_8N1,1</span></code> 命令进入从模式，然后点击【发送】按钮，在接收区返回OK表示设置成功。其中485代表使用RS485的从模式、115200代表波特率、8代表数据位、N代表奇偶校验位、1代表停止位，最后的1是代表Modbus总线地址。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/modbus_slave_set.png" src="../_images/modbus_slave_set.png" />
+</div>
+</div></blockquote>
+<p>此时重启设备，出现嘀的一声后，会连续嘀嘀响，说明设备已经进入从模式。</p>
+<p>在串口助手发送区输入AT+GETSLAVE=? 命令可以得到当前设置状态，点击【发送】按钮发送。</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
