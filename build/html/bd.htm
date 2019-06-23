@@ -366,7 +366,7 @@ padding: 0 !important;
 }
 .blocklyWidgetDiv .goog-option-selected .goog-menuitem-checkbox,
 .blocklyWidgetDiv .goog-option-selected .goog-menuitem-icon {
-background: url(https://blockly-demo.appspot.com/static/media/sprites.png) no-repeat -48px -16px !important;
+background: url(_static/sprites.png) no-repeat -48px -16px !important;
 }
 .blocklyToolboxDiv {
 background-color: #ddd;
@@ -419,7 +419,7 @@ padding: 5px 0;
 margin: 0 5px;
 }
 .blocklyTreeIcon {
-background-image: url(https://blockly-demo.appspot.com/static/media/sprites.png);
+background-image: url(_static/sprites.png);
 height: 16px;
 vertical-align: middle;
 width: 16px;
@@ -672,7 +672,6 @@ Blockly.Blocks['sdl_rs422_send'] = {
 		{
 			//Blockly.Events.disable();
 			var cbName = this.getField("CALLBACK").text_;
-			console.info(cbName);
 			var busCbBlock = workspace.newBlock("procedures_defnoreturn");
 
 			busCbBlock.initSvg();
@@ -729,13 +728,13 @@ this.setCommentText("利用modbus协议(rs422)总线向传感器发送数据");
 		{
 			//Blockly.Events.disable();
 			var cbName = this.getField("CALLBACK").text_;
-			console.info(cbName);
 			var busCbBlock = workspace.newBlock("procedures_defnoreturn");
 
 			busCbBlock.initSvg();
 			//Blockly.Events.enable();
 			busCbBlock.getField("NAME").setText(cbName);
 			busCbBlock.arguments_ = ["status","data"];
+			busCbBlock.setCommentText("modbus回调函数");
 			busCbBlock.updateParams_();
 			busCbBlock.render();
 		}
@@ -785,13 +784,13 @@ Blockly.Blocks['sdl_rs232_send'] = {
 		{
 			//Blockly.Events.disable();
 			var cbName = this.getField("CALLBACK").text_;
-			console.info(cbName);
 			var busCbBlock = workspace.newBlock("procedures_defnoreturn");
 
 			busCbBlock.initSvg();
 			//Blockly.Events.enable();
 			busCbBlock.getField("NAME").setText(cbName);
 			busCbBlock.arguments_ = ["status","data"];
+			busCbBlock.setCommentText("rs232回调函数");
 			busCbBlock.updateParams_();
 			busCbBlock.render();
 		}
@@ -828,6 +827,7 @@ Blockly.Blocks['sdl_delay_call'] = {
     this.setColour(230);
  this.setTooltip("延时执行");
  this.setHelpUrl("");
+ this.setCommentText("延时执行"); 
  this.setOnChange(function(event){
 	if(event.type == Blockly.Events.CREATE)
 	{
@@ -836,7 +836,6 @@ Blockly.Blocks['sdl_delay_call'] = {
 		{
 			//Blockly.Events.disable();
 			var cbName = this.getField("CALLBACK").text_;
-			console.info(cbName);
 			var busCbBlock = workspace.newBlock("procedures_defnoreturn");
 			busCbBlock.setCommentText("延时回调函数")
 			busCbBlock.initSvg();
@@ -1238,6 +1237,7 @@ Blockly.Blocks['sdl_sdi12_1_send'] = {
     this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
+ this.setCommentText("使用SDI12_1进行采集");
  this.setOnChange(function(event){
 	if(event.type == Blockly.Events.CREATE)
 	{
@@ -1246,13 +1246,13 @@ Blockly.Blocks['sdl_sdi12_1_send'] = {
 		{
 			//Blockly.Events.disable();
 			var cbName = this.getField("CALLBACK").text_;
-			console.info(cbName);
 			var busCbBlock = workspace.newBlock("procedures_defnoreturn");
 
 			busCbBlock.initSvg();
 			//Blockly.Events.enable();
 			busCbBlock.getField("NAME").setText(cbName);
 			busCbBlock.arguments_ = ["status","data"];
+			busCbBlock.setCommentText("sdi12_1回调函数");
 			busCbBlock.updateParams_();
 			busCbBlock.render();
 		}
@@ -1290,6 +1290,7 @@ Blockly.Blocks['sdl_sdi12_2_send'] = {
     this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
+ this.setCommentText("使用SDI12_2进行采集");
  this.setOnChange(function(event){
 	if(event.type == Blockly.Events.CREATE)
 	{
@@ -1298,13 +1299,13 @@ Blockly.Blocks['sdl_sdi12_2_send'] = {
 		{
 			//Blockly.Events.disable();
 			var cbName = this.getField("CALLBACK").text_;
-			console.info(cbName);
 			var busCbBlock = workspace.newBlock("procedures_defnoreturn");
 
 			busCbBlock.initSvg();
 			//Blockly.Events.enable();
 			busCbBlock.getField("NAME").setText(cbName);
 			busCbBlock.arguments_ = ["status","data"];
+			busCbBlock.setCommentText("sdi12_2回调函数");
 			busCbBlock.updateParams_();
 			busCbBlock.render();
 		}
@@ -1442,6 +1443,106 @@ Blockly.Lua['sdl_pwm_get'] = function(block) {
   return [code, Blockly.Lua.ORDER_NONE];
 };
 
+Blockly.Blocks['sdl_pulse1_count_start'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("pulse1_count_start");
+    this.appendDummyInput()
+        .appendField("获取指定时间内PWM_1通道的计数值");
+    this.appendDummyInput()
+        .appendField("超时时间：")
+        .appendField(new Blockly.FieldNumber(1,0),"TIMEOUT");
+
+    this.appendDummyInput()
+        .appendField("回调函数：")
+        .appendField(new Blockly.FieldTextInput("pwm_callback"+(busCBCnt++)), "CALLBACK");
+
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+ this.setCommentText("指定时间内高速脉冲计数");
+ this.setOnChange(function(event){
+	if(event.type == Blockly.Events.CREATE)
+	{
+		var block = workspace.getBlockById(event.blockId);
+		if(block == this)
+		{
+			//Blockly.Events.disable();
+			var cbName = this.getField("CALLBACK").text_;
+			var busCbBlock = workspace.newBlock("procedures_defnoreturn");
+
+			busCbBlock.initSvg();
+			//Blockly.Events.enable();
+			busCbBlock.getField("NAME").setText(cbName);
+			busCbBlock.arguments_ = ["timeout","data"];
+			busCbBlock.updateParams_();
+			busCbBlock.setCommentText("pwm回调函数");
+			busCbBlock.render();
+		}
+	}
+ });
+  }
+};
+Blockly.Lua['sdl_pulse1_count_start'] = function(block) {
+  var number_timeout = block.getFieldValue('TIMEOUT');
+
+  var statement_name =block.getFieldValue('CALLBACK');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'pulse1_count_start('+ number_timeout+ ','+statement_name+')\n';
+  return code;
+};
+Blockly.Blocks['sdl_pulse2_count_start'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("pulse2_count_start");
+    this.appendDummyInput()
+        .appendField("获取指定时间内PWM_2通道的计数值");
+    this.appendDummyInput()
+        .appendField("超时时间：")
+        .appendField(new Blockly.FieldNumber(1,0),"TIMEOUT");
+
+    this.appendDummyInput()
+        .appendField("回调函数：")
+        .appendField(new Blockly.FieldTextInput("pwm_callback"+(busCBCnt++)), "CALLBACK");
+
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+ this.setCommentText("指定时间内高速脉冲计数");
+ this.setOnChange(function(event){
+	if(event.type == Blockly.Events.CREATE)
+	{
+		var block = workspace.getBlockById(event.blockId);
+		if(block == this)
+		{
+			//Blockly.Events.disable();
+			var cbName = this.getField("CALLBACK").text_;
+			var busCbBlock = workspace.newBlock("procedures_defnoreturn");
+
+			busCbBlock.initSvg();
+			//Blockly.Events.enable();
+			busCbBlock.getField("NAME").setText(cbName);
+			busCbBlock.arguments_ = ["timeout","data"];
+			busCbBlock.updateParams_();
+			busCbBlock.setCommentText("pwm回调函数");
+			busCbBlock.render();
+		}
+	}
+ });
+  }
+};
+Blockly.Lua['sdl_pulse2_count_start'] = function(block) {
+  var number_timeout = block.getFieldValue('TIMEOUT');
+
+  var statement_name =block.getFieldValue('CALLBACK');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'pulse1_count_start('+ number_timeout+ ','+statement_name+')\n';
+  return code;
+};
 Blockly.Blocks['sdl_pt_temperature'] = {
   init: function() {
     this.appendDummyInput()
@@ -1746,6 +1847,8 @@ Blockly.Lua['sdl_test'] = function(block) {
 			<block type="sdl_pwm_status"></block>
 			<block type="sdl_pwm_set"></block>
 			<block type="sdl_pwm_get"></block>
+			<block type="sdl_pulse1_count_start"></block>
+			<block type="sdl_pulse2_count_start"></block>
 		</category>
 		<category id="catSDLCACHE" name="缓存">
 			<block type="sdl_set_global_number"></block>
@@ -2050,23 +2153,6 @@ Blockly.Lua['sdl_test'] = function(block) {
 var defaultBlocks = document.getElementById('blocklyDefault');
  Blockly.Xml.domToWorkspace(defaultBlocks, workspace);
   function myUpdateFunction(event) {
-	if(event.type == Blockly.Events.CREATE)
-	{
-		block = workspace.getBlockById(event.blockId);
-		console.info(event.blockId)
-		console.info(block.type)
-		if(block.type == 'sdl_pwm_get')
-		{
-			//Blockly.Events.disable();	
-
-			var sdl_pwm_set_block = workspace.newBlock("sdl_pwm_set");
-			sdl_pwm_set_block.initSvg();
-			sdl_pwm_set_block.render();
-
-			//Blockly.Events.enable();	
-		}
-
-	}
 
 
     var languageDropdown = document.getElementById('languageDropdown');
@@ -2080,9 +2166,9 @@ var defaultBlocks = document.getElementById('blocklyDefault');
     prettyPrint();
   }
   workspace.addChangeListener(myUpdateFunction);
-  function executeBlockCode() {
-    var code = Blockly.Xml.workspaceToDom(workspace);
-  	alert(code.innerHTML); 
+  function executeBlockCode(event) {
+    var code = Blockly.Lua.workspaceToCode(workspace);
+  	alert(code); 
   }
   
   document.getElementById('playButton').addEventListener('click', executeBlockCode);

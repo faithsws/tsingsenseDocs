@@ -325,6 +325,22 @@
 <div><p>智能数据采集仪 提供6个通道的 单端 电压测量以及 3对 差分电压测量。 24bit分辨率， 量程 0~4.096V。</p>
 <p>脚本函数为： <code class="docutils literal"><span class="pre">vol_sigle_get</span></code> , <code class="docutils literal"><span class="pre">vol_diff_get</span></code></p>
 <p>相关端子为： <code class="docutils literal"><span class="pre">AD0</span></code> , <code class="docutils literal"><span class="pre">AD1</span></code> , <code class="docutils literal"><span class="pre">AD2</span></code> , <code class="docutils literal"><span class="pre">AD3</span></code> , <code class="docutils literal"><span class="pre">AD4</span></code> , <code class="docutils literal"><span class="pre">AD5</span></code></p>
+<p>参考连接电路：</p>
+<blockquote>
+<div><p>单端电压测量</p>
+<div class="figure align-center" id="id25">
+<img alt="../_images/vol_single_get_4.096.jpg" src="../_images/vol_single_get_4.096.jpg" />
+<p class="caption"><span class="caption-text">输出电压小于4.096V</span></p>
+</div>
+<div class="figure align-center" id="id26">
+<img alt="../_images/vol_single_get_10.jpg" src="../_images/vol_single_get_10.jpg" />
+<p class="caption"><span class="caption-text">输出电压 0 ~ 10V</span></p>
+</div>
+<p>差分电压测量</p>
+<div class="figure align-center">
+<img alt="../_images/vol_diff_get.jpg" src="../_images/vol_diff_get.jpg" />
+</div>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="id14">
@@ -333,11 +349,44 @@
 <div><p>智能数据采集仪 提供2个通道的电流测量。 24bit分辨率， 量程 4 ~ 20mA。</p>
 <p>脚本函数为： <code class="docutils literal"><span class="pre">current_get</span></code></p>
 <p>相关端子为： <code class="docutils literal"><span class="pre">AD2</span></code> , <code class="docutils literal"><span class="pre">AD3</span></code></p>
+<p>参考连接电路：</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/current_get.jpg" src="../_images/current_get.jpg" />
+</div>
 </div></blockquote>
+</div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">仅 <code class="docutils literal"><span class="pre">AD2</span></code> , <code class="docutils literal"><span class="pre">AD3</span></code> 具有电流测量功能。</p>
+</div>
 </div>
 <div class="section" id="id15">
 <h4>热电阻测量<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h4>
-<p>TODO</p>
+<blockquote>
+<div><p>智能数据采集仪 可以进行一通道 PT100热电阻测量。支持三线式 和 四线式 PT100传感器。</p>
+<p>脚本函数为： <code class="docutils literal"><span class="pre">pt100_3wire_get</span></code> , <code class="docutils literal"><span class="pre">pt100_4wire_get</span></code></p>
+<p>相关端子为： <code class="docutils literal"><span class="pre">AD0</span></code> , <code class="docutils literal"><span class="pre">AD1</span></code> , <code class="docutils literal"><span class="pre">AD2</span></code> , <code class="docutils literal"><span class="pre">AD3</span></code> , <code class="docutils literal"><span class="pre">AD4</span></code> , <code class="docutils literal"><span class="pre">AD5</span></code></p>
+<p>参考连接电路：</p>
+<blockquote>
+<div><p>三线式PT100传感器</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/pt100_3wire_get.jpg" src="../_images/pt100_3wire_get.jpg" />
+</div>
+</div></blockquote>
+<p>四线式PT100传感器</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/pt100_4wire_get.jpg" src="../_images/pt100_4wire_get.jpg" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">请注意连接端子 与 脚本函数参数的对应关系</p>
+</div>
 </div>
 </div>
 <div class="section" id="id16">
@@ -355,10 +404,32 @@
 <blockquote>
 <div><code class="docutils literal"><span class="pre">SDI12_1</span></code> , <code class="docutils literal"><span class="pre">SDI12_2</span></code> , <code class="docutils literal"><span class="pre">PWM_1</span></code> , <code class="docutils literal"><span class="pre">PWM_2</span></code></div></blockquote>
 </div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">数字输出时，驱动能力较弱。电流消耗较大的场合，请扩展驱动电路。</p>
+</div>
 </div>
 <div class="section" id="id17">
 <h3>脉冲计数与频率<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
-<p>TODO</p>
+<blockquote>
+<div><p>智能数据采集仪 可以进行 4个通道的低频计数功能。低频计数时，不需要指定时间，一旦 <code class="docutils literal"><span class="pre">pwm_start</span></code> 计数开始，每当引脚端子监测到上升沿，对应 计数值增一。可以在任意 <code class="docutils literal"><span class="pre">on_start</span></code>
+执行时，通过 <code class="docutils literal"><span class="pre">pwm_get</span></code> 获取计数。低频计数不受设备休眠影响。可以通过 <code class="docutils literal"><span class="pre">pwm_stop</span></code> 停止计数，也可以通过 <code class="docutils literal"><span class="pre">pwm_set</span></code> 重置计数。计数范围：0 ~ 2^32 。</p>
+<p>低频计数相关端子：  <code class="docutils literal"><span class="pre">PWM_1</span></code> , <code class="docutils literal"><span class="pre">PWM_2</span></code> ,  <code class="docutils literal"><span class="pre">SDI12_1</span></code> <strong>脚本中使用PWM_3</strong>, <code class="docutils literal"><span class="pre">SDI12_2</span></code> <strong>脚本中使用PWM_4</strong></p>
+<p>智能数据采集仪 可以进行 2个通道的高频计数功能。高频计数需要指定一个时间段，统计一个时间段内的总的脉冲个数。通常用于频率测量。由于测量时隙内，回调函数返回之前，设备无法休眠，将导致功耗增大，所以请合理选择测量时间。</p>
+<p>高频计数函数： <code class="docutils literal"><span class="pre">pulse1_count_start</span></code> , <code class="docutils literal"><span class="pre">pulse2_count_start</span></code></p>
+<p>高频计数相关端子: <code class="docutils literal"><span class="pre">PWM_1</span></code> , <code class="docutils literal"><span class="pre">PWM_2</span></code></p>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">低频测量时，对于机械式脉冲传感器，比如翻斗式雨量筒， 为避免机械接触时产生的抖动导致的误计数， 可以在测量引脚端子与GND之间并联 0.1uF ~ 1uF的电容。</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">对于 <code class="docutils literal"><span class="pre">PWM_1</span></code> <code class="docutils literal"><span class="pre">PWM_2</span></code> 端子，内部已经通过4.7K电阻上拉至5V，所以可以直接连接机械式脉冲传感器 和 NPN型 开漏输出传感器，不需要额外电路。</p>
+</div>
+<div class="figure align-center">
+<img alt="../_images/pwm_get.jpg" src="../_images/pwm_get.jpg" />
+</div>
 </div>
 </div>
 <div class="section" id="id18">

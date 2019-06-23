@@ -8,5 +8,6 @@
    
    introduction
    functions 
+   scripts
 
 
