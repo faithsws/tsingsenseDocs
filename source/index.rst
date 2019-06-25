@@ -13,7 +13,6 @@
    :maxdepth: 2
    :caption: 内容:
 
-   rst_test
    hardware/index
    software/index
    host/index

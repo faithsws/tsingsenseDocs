@@ -35,7 +35,7 @@
         <link rel="search" title="搜索" href="../search.html"/>
     <link rel="top" title="智能数据采集仪脚本说明  文档" href="../index.html"/>
         <link rel="up" title="脚本指导手册" href="index.html"/>
-        <link rel="next" title="上位机使用手册" href="../host/index.html"/>
+        <link rel="next" title="工程示例" href="scripts.html"/>
         <link rel="prev" title="系统一览" href="introduction.html"/> 
 
   
@@ -151,6 +151,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">工程示例</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../host/index.html">上位机使用手册</a></li>
@@ -557,7 +558,7 @@
 <td>AD端子通道号。范围：‘&#8217;AD0&#8217;,&#8217;AD1&#8217;,&#8217;AD2&#8217;,&#8217;AD3&#8217;,&#8217;AD4&#8217;,&#8217;AD5&#8217;</td>
 </tr>
 <tr class="row-even"><td>ad_channel3</td>
-<td>AD端子通道号。范围：‘&#8217;AD0&#8217;,&#8217;AD1&#8217;,&#8217;AD2&#8217;,&#8217;AD3&#8217;,&#8217;AD4&#8217;,&#8217;AD5&#8217;</td>
+<td>AD端子通道号。范围：‘&#8217;AD2&#8217;,&#8217;AD3&#8217;</td>
 </tr>
 <tr class="row-odd"><td>返回值</td>
 <td>PT100热电阻的阻值</td>
@@ -568,7 +569,8 @@
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
-<p class="last">PT100 3线热电阻测温硬件连接方法，请参考 硬件使用手册。 相关原理请参考 <a class="reference external" href="http://www.360doc.com/content/12/0829/16/2607680_233017457.shtml">热电阻测温原理及接线方式介绍</a></p>
+<p class="last">PT100 3线热电阻测温硬件连接方法，请参考 硬件使用手册。 相关原理请参考 <a class="reference external" href="http://www.360doc.com/content/12/0829/16/2607680_233017457.shtml">热电阻测温原理及接线方式介绍</a>
+蓝色线连接通道对应脚本函数 <code class="docutils literal"><span class="pre">pt100_3wire_get</span></code> 第一个参数。红色线之一必须连接于 <code class="docutils literal"><span class="pre">AD2</span></code> 或 <code class="docutils literal"><span class="pre">AD3</span></code> 端子，并且 <code class="docutils literal"><span class="pre">pt100_3wire_get</span></code> 第三个参数必须为 <code class="docutils literal"><span class="pre">AD2</span></code> 或 <code class="docutils literal"><span class="pre">AD3</span></code></p>
 </div>
 </div>
 <div class="section" id="pt100-4wire-get">
@@ -596,7 +598,7 @@
 <td>AD端子通道号。范围：‘&#8217;AD0&#8217;,&#8217;AD1&#8217;,&#8217;AD2&#8217;,&#8217;AD3&#8217;,&#8217;AD4&#8217;,&#8217;AD5&#8217;</td>
 </tr>
 <tr class="row-odd"><td>ad_channel4</td>
-<td>AD端子通道号。范围：‘&#8217;AD0&#8217;,&#8217;AD1&#8217;,&#8217;AD2&#8217;,&#8217;AD3&#8217;,&#8217;AD4&#8217;,&#8217;AD5&#8217;</td>
+<td>AD端子通道号。范围：‘&#8217;AD2&#8217;,&#8217;AD3&#8217;</td>
 </tr>
 <tr class="row-even"><td>返回值</td>
 <td>PT100热电阻的阻值</td>
@@ -607,7 +609,8 @@
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
-<p class="last">PT100 4线热电阻测温硬件连接方法，请参考 硬件使用手册。 相关原理请参考 <a class="reference external" href="http://www.360doc.com/content/12/0829/16/2607680_233017457.shtml">热电阻测温原理及接线方式介绍</a></p>
+<p class="last">PT100 4线热电阻测温硬件连接方法，请参考 硬件使用手册。 相关原理请参考 <a class="reference external" href="http://www.360doc.com/content/12/0829/16/2607680_233017457.shtml">热电阻测温原理及接线方式介绍</a>
+蓝色端子对应 <code class="docutils literal"><span class="pre">pt100_4wire_get</span></code> 的第1和第2参数，红色端子对应与第3和第4参数。 并且，第4参数通道必须为 <code class="docutils literal"><span class="pre">AD2</span></code> 或 <code class="docutils literal"><span class="pre">AD3</span></code> 之一。</p>
 </div>
 </div>
 </div>
@@ -1363,7 +1366,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../host/index.html" class="btn btn-neutral float-right" title="上位机使用手册" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scripts.html" class="btn btn-neutral float-right" title="工程示例" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="introduction.html" class="btn btn-neutral" title="系统一览" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

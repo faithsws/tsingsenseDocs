@@ -89,10 +89,46 @@
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">系统一览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functions.html">函数一览</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">工程示例</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#rs422-xxx">rs422 连接 xxx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sdi-12">SDI-12土壤温湿度传感器</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">传感器参考</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">连接参考</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">脚本参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#log">执行log</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pt100">Pt100三线铂电阻</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">传感器参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">连接参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">脚本参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">执行log</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modbus">Modbus温湿度变送器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">传感器参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">连接参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">脚本参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">执行log</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pwm">PWM雨量传感器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">传感器参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">连接参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">脚本参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">执行log</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ma">4-20mA光照度变送器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">传感器参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">连接参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">脚本参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">执行log</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">电压测量 干电池</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">传感器参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">连接参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">脚本参考</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">执行log</a></li>
 </ul>
 </li>
 </ul>
@@ -148,16 +184,599 @@
             
   <div class="section" id="id1">
 <h1>工程示例<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<div class="section" id="rs422-xxx">
-<h2>rs422 连接 xxx<a class="headerlink" href="#rs422-xxx" title="永久链接至标题">¶</a></h2>
+<div class="section" id="sdi-12">
+<h2>SDI-12土壤温湿度传感器<a class="headerlink" href="#sdi-12" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>通过基站式智能数据采集仪连接SDI-12土壤温湿度传感器，采集传感器数据并解析，通过上位机执行测试脚本显示出具体温度等信息。</div></blockquote>
 <div class="section" id="id2">
 <h3>传感器参考<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>官方网站： <a class="reference external" href="http://www.acclima.com">http://www.acclima.com</a></p>
+<p><a class="reference download internal" href="../_downloads/User Manual SDI and SDIP TDT.pdf" download=""><code class="xref download docutils literal"><span class="pre">传感器Datasheet</span></code></a></p>
+</div></blockquote>
 </div>
 <div class="section" id="id3">
 <h3>连接参考<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>将SDI-12土壤温湿度传感器红色端连接基站式智能数据采集仪PWR端子、白色端连接GND端子、蓝色端连接SDI12-1或者SDI12-2端子。</p>
+<div class="figure align-center" id="id27">
+<img alt="../_images/sdi12_sc_ref.png" src="../_images/sdi12_sc_ref.png" />
+<p class="caption"><span class="caption-text">参考连接</span></p>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="id4">
 <h3>脚本参考<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><div class="highlight-lua"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="nf">on_config</span><span class="p">()</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_sdi12_1_callback2</span><span class="p">(</span><span class="n">status</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">on_sdi12_1_callback2&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="o">#</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">response timeout&quot;</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">then</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">receive data error&quot;</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
+                <span class="k">return</span>
+        <span class="k">end</span>
+        <span class="k">if</span> <span class="o">#</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+                <span class="k">return</span>
+        <span class="k">end</span>
+
+        <span class="n">ds</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">&quot;</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="k">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">do</span>
+                <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">..</span><span class="nb">string.char</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">end</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+        <span class="n">f</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">address</span><span class="p">,</span><span class="n">ec</span><span class="p">,</span><span class="n">vwc</span><span class="p">,</span><span class="n">t</span> <span class="o">=</span> <span class="nb">string.find</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="s2">&quot;</span><span class="s">(%d+)+(%d+.%d+)+(%d+.%d+)(.%d+.%d+).*&quot;</span><span class="p">)</span>    <span class="c1">--数据解析</span>
+        <span class="n">vwc1</span> <span class="o">=</span> <span class="nb">tonumber</span><span class="p">(</span><span class="n">vwc</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">温度:&#39;</span><span class="o">..</span><span class="n">vwc1</span><span class="p">)</span>                                                  <span class="c1">--输出采集温度大小</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">FLOAT&#39;</span><span class="p">,</span><span class="n">vwc1</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_timeout1</span><span class="p">()</span>
+        <span class="n">sdi12_1_send</span><span class="p">({</span><span class="mi">48</span><span class="p">,</span><span class="mi">68</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">33</span><span class="p">},</span><span class="mi">3</span><span class="p">,</span><span class="n">on_sdi12_1_callback2</span><span class="p">)</span>                    <span class="c1">--发送0D0！</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_sdi12_1_callback</span><span class="p">(</span><span class="n">status</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">on_sdi12_1_callback&#39;</span><span class="p">)</span>
+        <span class="n">delay_call</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">on_timeout1</span><span class="p">)</span>                                              <span class="c1">--延时3s</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_start</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---on start-----&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">())</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">UCHAR&#39;</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">UCHAR&#39;</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">BCD_YYMMDDHHMM&#39;</span><span class="p">,</span><span class="n">bcdtime</span><span class="p">())</span>
+        <span class="n">sdi12_1_send</span><span class="p">({</span><span class="mi">48</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">33</span><span class="p">},</span><span class="mi">3</span><span class="p">,</span><span class="n">on_sdi12_1_callback</span><span class="p">)</span>                        <span class="c1">--发送0C！，延时3s</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="log">
+<h3>执行log<a class="headerlink" href="#log" title="永久链接至标题">¶</a></h3>
+<div class="figure align-center">
+<img alt="../_images/sdi12_log.png" src="../_images/sdi12_log.png" />
+</div>
+</div>
+</div>
+<div class="section" id="pt100">
+<h2>Pt100三线铂电阻<a class="headerlink" href="#pt100" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>测量3线铂电阻的真实阻值。</div></blockquote>
+<div class="section" id="id5">
+<h3>传感器参考<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>连接参考<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>Pt100铂电阻引出三线，Pt100接线时电流回路的参考和电压测量回路的参考为一条线（即检测设备的I-端子和V-端子短接）。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">蓝色线连接通道对应脚本函数 <code class="docutils literal"><span class="pre">pt100_3wire_get</span></code> 第一个参数。红色线之一必须连接于 <code class="docutils literal"><span class="pre">AD2</span></code> 或 <code class="docutils literal"><span class="pre">AD3</span></code> 端子，并且 <code class="docutils literal"><span class="pre">pt100_3wire_get</span></code> 第三个参数必须为 <code class="docutils literal"><span class="pre">AD2</span></code> 或 <code class="docutils literal"><span class="pre">AD3</span></code></p>
+</div>
+<div class="figure align-center" id="id28">
+<img alt="../_images/pt100_3wire_sc_ref.png" src="../_images/pt100_3wire_sc_ref.png" />
+<p class="caption"><span class="caption-text">参考连接</span></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h3>脚本参考<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><div class="highlight-lua"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="nf">on_config</span><span class="p">()</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_start</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---on start-----&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">pt100_3wire_get&#39;</span><span class="p">)</span>
+
+        <span class="n">resistance</span> <span class="o">=</span> <span class="n">pt100_3wire_get</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">AD0&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">AD5&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">AD2&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">铂电阻值:&#39;</span><span class="o">..</span><span class="n">resistance</span><span class="p">)</span>
+
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">pt100_temperature</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">PT100&#39;</span><span class="p">,</span><span class="n">resistance</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">温度值:&#39;</span><span class="o">..</span><span class="n">temp</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---end----&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h3>执行log<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<div class="figure align-center">
+<img alt="../_images/pt100_3wire_log.png" src="../_images/pt100_3wire_log.png" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">四线PT100热电阻传感器，蓝色端子对应 <code class="docutils literal"><span class="pre">pt100_4wire_get</span></code> 的第1和第2参数，红色端子对应与第3和第4参数。
+并且，第4参数通道必须为 <code class="docutils literal"><span class="pre">AD2</span></code> 或 <code class="docutils literal"><span class="pre">AD3</span></code> 之一。</p>
+</div>
+</div>
+</div>
+<div class="section" id="modbus">
+<h2>Modbus温湿度变送器<a class="headerlink" href="#modbus" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>通过基站式智能数据采集仪连接485温湿度变送器，采集传感器数据并解析，通过上位机执行测试脚本显示出空气中温度值和湿度值</div></blockquote>
+<div class="section" id="id9">
+<h3>传感器参考<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3>连接参考<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>485温湿度变送器红色线接PWR端子、黑色线接GND端子，将基站式智能数据采集仪AY、BZ端子短接后，将485温湿度变送器黄色线接到基站式智能数据采集仪A端子处、白色线接在B端子处。</p>
+<div class="figure align-center" id="id29">
+<img alt="../_images/rs422_sc_ref.png" src="../_images/rs422_sc_ref.png" />
+<p class="caption"><span class="caption-text">参考连接</span></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h3>脚本参考<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><div class="highlight-lua"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="nf">on_config</span><span class="p">()</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_modbus_callback</span><span class="p">(</span><span class="n">status</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">on_modbus_callback&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="o">#</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">response timeout&quot;</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">then</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">receive data error&quot;</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">then</span>
+                <span class="k">return</span>
+        <span class="k">end</span>
+
+        <span class="k">if</span> <span class="o">#</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+                <span class="k">return</span>
+        <span class="k">end</span>
+
+        <span class="n">val</span><span class="o">=</span> <span class="s2">&quot;</span><span class="s">&quot;</span>
+        <span class="n">humidity</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span><span class="o">/</span><span class="mi">10</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span><span class="o">/</span><span class="mi">10</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="nb">string.format</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">%g,%g&quot;</span><span class="p">,</span><span class="n">temperature</span><span class="p">,</span><span class="n">humidity</span><span class="p">)</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">UCHAR&#39;</span><span class="p">,</span><span class="n">temperature</span><span class="p">)</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">UCHAR&#39;</span><span class="p">,</span><span class="n">humidity</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">温度:&#39;</span><span class="o">..</span><span class="n">temperature</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">湿度:&#39;</span><span class="o">..</span><span class="n">humidity</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_start</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---on start-----&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">())</span>
+        <span class="n">modbus_send</span><span class="p">({</span><span class="mh">0x01</span><span class="p">,</span><span class="mh">0x03</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x02</span><span class="p">,</span><span class="mh">0xC4</span><span class="p">,</span><span class="mh">0x0B</span><span class="p">},</span><span class="s1">&#39;</span><span class="s">4800_8N1&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">on_modbus_callback</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h3>执行log<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<div class="figure align-center">
+<img alt="../_images/rs422_log.png" src="../_images/rs422_log.png" />
+</div>
+</div>
+</div>
+<div class="section" id="pwm">
+<h2>PWM雨量传感器<a class="headerlink" href="#pwm" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>通过基站式智能数据采集仪连接485温湿度变送器，采集传感器数据并解析，通过上位机执行测试脚本显示出空气中温度值和湿度值</div></blockquote>
+<div class="section" id="id13">
+<h3>传感器参考<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><a class="reference external" href="http://www.tsingsense.com.cn/index.php?act=goods&amp;op=index&amp;goods_id=100065">光学雨量传感器RS-100自动雨量计翻斗雨量筒降雨水量测量仪</a></div></blockquote>
+</div>
+<div class="section" id="id14">
+<h3>连接参考<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>雨量传感器NO端接基站式智能数据采集仪PWM_1端子处、 NC端接GND端子、 负端接GND端子、正端接PWR端子。拨码开关如下</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">b1</th>
+<th class="head">b2</th>
+<th class="head">b3</th>
+<th class="head">b4</th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>x</td>
+<td>x</td>
+<td>1</td>
+<td>1</td>
+<td>脉冲输出模式</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="figure align-center" id="id30">
+<img alt="../_images/pwm_sc_ref.png" src="../_images/pwm_sc_ref.png" />
+<p class="caption"><span class="caption-text">参考连接</span></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id15">
+<h3>脚本参考<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><div class="highlight-lua"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="nf">on_config</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">61</span> <span class="k">do</span>
+                <span class="n">set_global_number</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="n">pwm_start</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">PWM_1&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>                                          <span class="c1">--PWM测量</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_start</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---on start-----&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">())</span>
+
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">UCHAR&#39;</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">UCHAR&#39;</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">BCD_YYMMDDHHMM&#39;</span><span class="p">,</span><span class="n">bcdtime</span><span class="p">())</span>
+
+        <span class="n">bcd_time</span> <span class="o">=</span> <span class="n">bcdtime</span><span class="p">()</span>                                           <span class="c1">--每日00：00数据清除</span>
+        <span class="k">if</span> <span class="n">bcd_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">bcd_time</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span> <span class="c1">--00:00</span>
+                <span class="n">set_global_number</span><span class="p">(</span><span class="mi">61</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">clear today&quot;</span><span class="p">)</span>
+        <span class="k">end</span>
+
+        <span class="n">today_val</span> <span class="o">=</span> <span class="n">get_global_number</span><span class="p">(</span><span class="mi">61</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="mi">60</span> <span class="k">do</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">get_global_number</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">set_global_number</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">end</span>
+
+        <span class="n">cnt</span> <span class="o">=</span> <span class="n">pwm_get</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">PWM_1&quot;</span><span class="p">)</span>                                       <span class="c1">--分钟降雨量</span>
+        <span class="n">pwm_set</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">PWM_1&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">minute&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+        <span class="n">set_global_number</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span>
+
+        <span class="n">hour_total</span> <span class="o">=</span> <span class="mi">0</span>                                               <span class="c1">--小时降雨量</span>
+        <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">60</span> <span class="k">do</span>
+                <span class="n">hour_total</span> <span class="o">=</span> <span class="n">hour_total</span> <span class="o">+</span> <span class="n">get_global_number</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">hour&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">hour_total</span><span class="p">)</span>
+
+        <span class="n">today_val</span> <span class="o">=</span> <span class="n">today_val</span> <span class="o">+</span> <span class="n">cnt</span>                                   <span class="c1">--当日降雨量</span>
+        <span class="n">set_global_number</span><span class="p">(</span><span class="mi">61</span><span class="p">,</span><span class="n">today_val</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">today&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">today_val</span><span class="p">)</span>
+        <span class="c1">--Actual rainfall upload</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">SINT&#39;</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">SINT&#39;</span><span class="p">,</span><span class="n">hour_total</span><span class="p">)</span>
+        <span class="n">add_data_item</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;</span><span class="s">SINT&#39;</span><span class="p">,</span><span class="n">today_val</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="id16">
+<h3>执行log<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<div class="figure align-center">
+<img alt="../_images/pwm_get_log.png" src="../_images/pwm_get_log.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ma">
+<h2>4-20mA光照度变送器<a class="headerlink" href="#ma" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>变送器是一款光精度感光变送器，输出数值计量单位为 Lux,设备采用壁挂防水外壳， 壁挂式安装，防护等级高。4-20mA/0-10V/0-5V 多种模拟量输出信号可选，产品供电为 10-30V 宽电压供电</div></blockquote>
+<div class="section" id="id17">
+<h3>传感器参考<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p><a class="reference external" href="https://item.taobao.com/item.htm?spm=a230r.1.14.16.66e865fcd0JeN2&amp;id=592766032591&amp;ns=1&amp;abbucket=10#detail">仁科光照度</a></p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">电流测量必须使用 <code class="docutils literal"><span class="pre">AD2</span></code> 或 <code class="docutils literal"><span class="pre">AD3</span></code> 端子</p>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>连接参考<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../_images/current_sensor.png" src="../_images/current_sensor.png" />
+</div>
+<div class="figure align-center" id="id31">
+<img alt="../_images/current_sc_ref.png" src="../_images/current_sc_ref.png" />
+<p class="caption"><span class="caption-text">参考连接</span></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id20">
+<h3>脚本参考<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><div class="highlight-lua"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="nf">on_config</span><span class="p">()</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_start</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---on start-----&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">current_get&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">current_get</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">AD2&#39;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---end----&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="id21">
+<h3>执行log<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<div class="figure align-center">
+<img alt="../_images/current_get_log.png" src="../_images/current_get_log.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id22">
+<h2>电压测量 干电池<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>输出干电池电压值</div></blockquote>
+<div class="section" id="id23">
+<h3>传感器参考<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>无</div></blockquote>
+</div>
+<div class="section" id="id24">
+<h3>连接参考<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>将南孚电池正端与基站式智能采集仪AD5通道号相连，负端接GND端子。</p>
+<div class="figure align-center" id="id32">
+<img alt="../_images/vol_sc_ref.png" src="../_images/vol_sc_ref.png" />
+<p class="caption"><span class="caption-text">参考连接</span></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id25">
+<h3>脚本参考<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><div class="highlight-lua"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="nf">on_config</span><span class="p">()</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">on_start</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---on start-----&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">vol_single_get&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">vol_single_get</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">AD5&#39;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">---on start end-----&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="id26">
+<h3>执行log<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<div class="figure align-center">
+<img alt="../_images/vol_log.png" src="../_images/vol_log.png" />
+</div>
 </div>
 </div>
 </div>
