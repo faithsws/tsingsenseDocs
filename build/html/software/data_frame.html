@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>存储格式与add_data_item &mdash; 智能数据采集仪脚本说明  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="智能数据采集仪脚本说明  文档" href="../index.html"/>
+        <link rel="up" title="脚本指导手册" href="index.html"/>
+        <link rel="next" title="上位机使用手册" href="../host/index.html"/>
+        <link rel="prev" title="工程示例" href="scripts.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 智能数据采集仪脚本说明
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/index.html">硬件使用手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">脚本指导手册</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">系统一览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">函数一览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">工程示例</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">存储格式与add_data_item</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">存储格式格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">add_data_item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">天星智联通道定义</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../host/index.html">上位机使用手册</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">智能数据采集仪脚本说明</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">脚本指导手册</a> &raquo;</li>
+      
+    <li>存储格式与add_data_item</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/software/data_frame.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="add-data-item">
+<span id="id1"></span><h1>存储格式与add_data_item<a class="headerlink" href="#add-data-item" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>存储格式格式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>每当函数 <code class="docutils literal"><span class="pre">on_start</span></code> 执行结束，如果在执行过程中使用函数 <code class="docutils literal"><span class="pre">add_data_item</span></code> 进行添加保存数据项，则按照如下格式存储数据。</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="17%" />
+<col width="16%" />
+<col width="22%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">通道总个数</th>
+<th class="head">通道ID和数据</th>
+<th class="head">通道ID和数据</th>
+<th class="head">...</th>
+<th class="head">通道ID和数据</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1 Byte</td>
+<td>不定长字节</td>
+<td>不定长字节</td>
+<td>...</td>
+<td>不定长字节</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>通道总个数：数据内容中包含的通道个数</li>
+<li>同一包数据中，可能有相同的通道ID，依据出现的顺序进行区别</li>
+<li>数据内容中包含个各要素的采集数据</li>
+</ul>
+</div></blockquote>
+<p>通道定义格式</p>
+<blockquote>
+<div><blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="22%" />
+<col width="13%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">通道ID</th>
+<th class="head">通道数据类型</th>
+<th class="head">数据内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>主类型ID / MID 1Byte</td>
+<td>子类型ID / CID 1Byte</td>
+<td>1 Byte</td>
+<td>n Byte</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<ul class="simple">
+<li>通道ID：用于区别不同通道，包括主类型和子类型，具体请参见通道编号说明</li>
+<li>通道数据类型：用以定义通道数据内容的格式，如下</li>
+</ul>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="28%" />
+<col width="41%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>01h</td>
+<td>Unsigned char</td>
+<td>1 Byte</td>
+</tr>
+<tr class="row-even"><td>02h</td>
+<td>Signed char</td>
+<td>1 Byte</td>
+</tr>
+<tr class="row-odd"><td>03h</td>
+<td>Unsigned int</td>
+<td>2 Byte</td>
+</tr>
+<tr class="row-even"><td>04h</td>
+<td>Signed int</td>
+<td>2 Byte</td>
+</tr>
+<tr class="row-odd"><td>05h</td>
+<td>Unsigned long</td>
+<td>4 Byte</td>
+</tr>
+<tr class="row-even"><td>06h</td>
+<td>Signed long</td>
+<td>4 Byte</td>
+</tr>
+<tr class="row-odd"><td>07h</td>
+<td>Float</td>
+<td>4 Byte</td>
+</tr>
+<tr class="row-even"><td>08h</td>
+<td>BCD HH</td>
+<td>1 Byte</td>
+</tr>
+<tr class="row-odd"><td>09h</td>
+<td>BCD MMHH</td>
+<td>2 Byte</td>
+</tr>
+<tr class="row-even"><td>10h</td>
+<td>BCD YYMMDDHHmmss</td>
+<td>6 Byte</td>
+</tr>
+<tr class="row-odd"><td>11h</td>
+<td>String</td>
+<td>n Byte</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p>每当脚本中调用函数 <code class="docutils literal"><span class="pre">add_data_item</span></code> ，《数据内容格式》中通道总个数加1，并按顺序增加一组新的通道ID和数据</p>
+<p>以下为一帧数据：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="5%" />
+<col width="5%" />
+<col width="4%" />
+<col width="4%" />
+<col width="5%" />
+<col width="5%" />
+<col width="4%" />
+<col width="4%" />
+<col width="5%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="4%" />
+<col width="4%" />
+<col width="5%" />
+<col width="2%" />
+<col width="2%" />
+<col width="4%" />
+<col width="4%" />
+<col width="5%" />
+<col width="2%" />
+<col width="2%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Num</th>
+<th class="head">MID</th>
+<th class="head">CID</th>
+<th class="head">TYPE</th>
+<th class="head">DATA</th>
+<th class="head">MID</th>
+<th class="head">CID</th>
+<th class="head">TYPE</th>
+<th class="head">DATA</th>
+<th class="head">MID</th>
+<th class="head">CID</th>
+<th class="head">TYPE</th>
+<th class="head" colspan="6">DATA</th>
+<th class="head">MID</th>
+<th class="head">CID</th>
+<th class="head">TYPE</th>
+<th class="head" colspan="2">DATA</th>
+<th class="head">MID</th>
+<th class="head">CID</th>
+<th class="head">TYPE</th>
+<th class="head" colspan="2">DATA</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>05</td>
+<td>00</td>
+<td>01</td>
+<td>01</td>
+<td>0C</td>
+<td>00</td>
+<td>02</td>
+<td>01</td>
+<td>17</td>
+<td>00</td>
+<td>03</td>
+<td>10</td>
+<td>18</td>
+<td>08</td>
+<td>22</td>
+<td>20</td>
+<td>52</td>
+<td>00</td>
+<td>06</td>
+<td>03</td>
+<td>04</td>
+<td>00</td>
+<td>00</td>
+<td>06</td>
+<td>02</td>
+<td>04</td>
+<td>00</td>
+<td>01</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>add_data_item<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>调用该函数时，向内存缓存中添加一个数据项，每个数据项由 <code class="docutils literal"><span class="pre">MID</span></code> ， <code class="docutils literal"><span class="pre">CID</span></code> ， <code class="docutils literal"><span class="pre">TYPE</span></code> ， <code class="docutils literal"><span class="pre">DATA</span></code> 构成，详细定义参考上述数据格式。
+每调用一次，数据格式的 <code class="docutils literal"><span class="pre">NUM</span></code> 增一。当本次 <code class="docutils literal"><span class="pre">on_start</span></code> 执行结束（回调函数结束）时，数据从内存缓存 保存至 非易失存储器。</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">数据上传时也按照 <strong>存储格式</strong> 进行上传。
+<code class="docutils literal"><span class="pre">MID</span></code> , <code class="docutils literal"><span class="pre">CID</span></code> 用于标记唯一传感器通道。 <code class="docutils literal"><span class="pre">TYPE</span></code> 用于标记数据类型，进而帮助解析 <code class="docutils literal"><span class="pre">DATA</span></code> 数据。</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last"><code class="docutils literal"><span class="pre">MID</span></code> ， <code class="docutils literal"><span class="pre">CID</span></code> ， <code class="docutils literal"><span class="pre">TYPE</span></code> ， <code class="docutils literal"><span class="pre">DATA</span></code> 由脚本编写者指定，更需要跟服务器端一一对应，否则无法正确解析跟显示数据。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>天星智联通道定义<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><a class="reference download internal" href="../_downloads/通道编号说明-标准.xls" download=""><code class="xref download docutils literal"><span class="pre">通道定义</span></code></a></div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../host/index.html" class="btn btn-neutral float-right" title="上位机使用手册" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scripts.html" class="btn btn-neutral" title="工程示例" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

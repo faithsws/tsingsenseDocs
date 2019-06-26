@@ -83,7 +83,6 @@
             
                 <p class="caption"><span class="caption-text">内容:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../rst_test.html">abc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware/index.html">硬件使用手册</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">脚本指导手册</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">系统一览</a></li>
@@ -130,7 +129,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#delay-call"><em>delay_call</em></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">数据</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-data-item">add_data_item</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">时间</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#datetime"><em>datetime</em></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#timestamp"><em>timestamp</em></a></li>
@@ -152,6 +154,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="scripts.html">工程示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_frame.html">存储格式与add_data_item</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../host/index.html">上位机使用手册</a></li>
@@ -1081,7 +1084,45 @@
 </div>
 <div class="section" id="id11">
 <h2>数据<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
-<p>add_data_item</p>
+<div class="section" id="add-data-item">
+<h3>add_data_item<a class="headerlink" href="#add-data-item" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>请参考 <a class="reference internal" href="data_frame.html#add-data-item"><span class="std std-ref">存储格式与add_data_item</span></a></p>
+<p>添加需要保存的数据项</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">add_data_item (mid,cid, data_type,data)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>参数   mid</td>
+<td>传感器数据项主通道号  0~255</td>
+</tr>
+<tr class="row-odd"><td>参数   cid</td>
+<td>传感器数据项子通道号  0~255</td>
+</tr>
+<tr class="row-even"><td>参数   data_type</td>
+<td><p class="first">传感器数据项类型</p>
+<blockquote class="last">
+<div>&#8216;UCHAR&#8217;,&#8217;SCHAR&#8217;,&#8217;UINT&#8217;,&#8217;SINT&#8217;,&#8217;ULONG&#8217;,&#8217;SLONG&#8217;,&#8217;BCD_HH&#8217;,&#8217;BCD_MMHH&#8217;,&#8217;FLOAT&#8217;,&#8217;STRING&#8217;,&#8217;BCD_YYMMDDHHMM&#8217;</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>参数   data</td>
+<td>要保存的数据 需要跟data_type对应，否则无法正确解析</td>
+</tr>
+<tr class="row-even"><td>返回值</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+</div>
 </div>
 <div class="section" id="id12">
 <h2>时间<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
