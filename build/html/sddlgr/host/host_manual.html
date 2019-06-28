@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>智能采集仪上位机使用手册 &mdash; 天星智联产品使用手册  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../../genindex.html"/>
+        <link rel="search" title="搜索" href="../../search.html"/>
+    <link rel="top" title="天星智联产品使用手册  文档" href="../../index.html"/>
+        <link rel="up" title="上位机使用手册" href="index.html"/>
+        <link rel="next" title="MODBUS 主从模式使用说明书" href="modbus_ms.html"/>
+        <link rel="prev" title="上位机使用手册" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 天星智联产品使用手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">智能数据采集仪</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../hardware/index.html">硬件使用手册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../software/index.html">脚本指导手册</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">上位机使用手册</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">智能采集仪上位机使用手册</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">配置软件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">连接设备</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">操作脚本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">设备设置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modbus_ms.html">MODBUS 主从模式使用说明书</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../visinr/index.html">能见度传感器</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">天星智联产品使用手册</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">智能数据采集仪</a> &raquo;</li>
+      
+          <li><a href="index.html">上位机使用手册</a> &raquo;</li>
+      
+    <li>智能采集仪上位机使用手册</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/sddlgr/host/host_manual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>智能采集仪上位机使用手册<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="figure align-center">
+<img alt="../../_images/front_view.png" src="../../_images/front_view.png" />
+</div>
+<div class="section" id="id2">
+<h2>配置软件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>软件使用<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>使用 数采精灵标准版上位机 连接 智能数据采集仪 。双击打开软件。</div></blockquote>
+<div class="figure align-center">
+<img alt="../../_images/host_overview.png" src="../../_images/host_overview.png" />
+</div>
+</div>
+<div class="section" id="id4">
+<h3>端口设置<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>如果不确定新增的串口，可以使用如下方法来确认：</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">WIN7系统在【开始】选项菜单中，右键【计算机】选项，选择【管理】选项。</p>
+</li>
+<li><p class="first">在对话框中，选择左侧的【设备管理器】选项。如图所示：</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/devie_manager.png" src="../../_images/devie_manager.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">展开右侧【端口】选项，通过插拔USB可以确认新增的COM口，根据自己电脑为准</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/win7_com.png" src="../../_images/win7_com.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">WIN10系统跟WIN7系统方法相同，同时可以查看端口设置信息。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/win10_com.png" src="../../_images/win10_com.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>连接设备<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">在连接USB线缆之前，请确认 智能数据采集仪 处于正常供电状态。处于连接调试状态的 智能数据采集仪 ，不会进入休眠状态。</p>
+</div>
+<div class="section" id="id6">
+<h3>打开串口<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">打开数采精灵标准版软件后，找到设备中的【打开串口】选项，点击之后弹出选择设备串口对话框，这里选择COM9，如果没有显示正确的串口号，可以点击【刷新】按钮进行串口更新。点击【OK】选项后配置成功，配置成功后可进行设备连接，点击【Cancel】选项取消设备连接。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/select_com.png" src="../../_images/select_com.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">连接成果后，会显示出设备状态和信息，在设备状态和信息对话框中显示具体的属性和值。其中属性包括：设备串码、固件版本、通信方式和modeltype。确定后点击【OK】选项进行下一步操作</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/device_status.png" src="../../_images/device_status.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h3>关闭串口<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>如果想要断开数采精灵标准版上位机和数据采集仪的连接，可以点击【关闭串口】选项断开与数据采集仪之间的连接。</div></blockquote>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>操作脚本<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id9">
+<h3>创建脚本<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>点击【创建脚本】选项可以进行新建脚本以及进行脚本编辑、修改等操作。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/new_script.png" src="../../_images/new_script.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h3>打开脚本<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>如果脚本已经创建好，可以点击【打开脚本】选项找到需要操作的脚本，根据保存脚本的路径找到后缀名为XX.lua的脚本文件。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/open_script.png" src="../../_images/open_script.png" />
+</div>
+</div></blockquote>
+<p>找到需要的脚本之后，点击【打开】选项进行操作。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h3>保存脚本<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>在新建脚本之后，需要将新建的脚本或者修改后的脚本加以保存，这里点击【保存脚本】选项进行保存，点击后会弹出保存的具体路径选项</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/save_script.png" src="../../_images/save_script.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h3>读取脚本<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>如果想获取 智能数据采集仪 内已下载的脚本，可点击【读取脚本】选项，进行脚本查看</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h3>下载运行<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>对编辑好的脚本，可点击【下载运行】选项进行脚本下载。</p>
+<p>点击【下载运行】之后会弹出执行日志对话框，执行日志内显示具体的执行过程以及发送接收数据等。</p>
+<p>在右侧点击【保存日志】选项可进行日志保存，点击保存后会弹出保存的具体路径。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/download_script.png" src="../../_images/download_script.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id14">
+<h3>执行任务<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>对于下载好的脚本，可直接点击【执行任务】选项进行任务执行操作，同样会显示出具体的执行日志。</div></blockquote>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>设备设置<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>在设备设置中包括设备信息、时间设置、设置设备、设备重启等操作</div></blockquote>
+<div class="section" id="id16">
+<h3>设备信息<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>点击【设备信息】选项可以看到采集仪的具体版本号等信息</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/device_status.png" src="../../_images/device_status.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id17">
+<h3>时间设置<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>点击【时间设置】选项可以进行时间设置和更改操作，点击之后会弹出设备时间选择对话框，可以选择年月日等。</p>
+<p>可以直接点击【系统时间】按钮，自动设置为电脑系统时间。设置完成点击【OK】即可。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/time_set.png" src="../../_images/time_set.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id18">
+<h3>设备设置<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>点击【设备设置】选项后会弹出设备设置选项对话框，对话框中包括服务器设置、任务和上传设置、无线参数设置</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/device_set.png" src="../../_images/device_set.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="section" id="id19">
+<h4>服务器设置<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><p>在服务器设置对话框中包括设备激活ID选项，在右侧高级设置选项前打对勾后，会弹出具体的高级设备对话框，其中包括主ID、服务器IP地址和服务器端口。根据具体情况在这里可进行一一设置，设置完成点击【OK】选项即可。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/server_set.png" src="../../_images/server_set.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id20">
+<h4>任务和上传设置<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><p>在任务和上传设置对话框中包括任务采集间隔和数据上传间隔选项，单位为秒，默认设置任务采集间隔为60秒，数据上传间隔为180秒，设置完成点击【OK】选项即可</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/task_set.png" src="../../_images/task_set.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id21">
+<h4>无线参数设置<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><p>在无线参数设置对话框中包括WIFI设置、LORA通信频率和通信速率设置，在右侧高级设置选项前打对勾后，会弹出具体的高级设备对话框，其中包括产品ID、OTAA ID、OTAA KEY，设置完成点击【OK】选项即可</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/wireless_set.png" src="../../_images/wireless_set.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id22">
+<h3>重启设备<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>找到设备操作中的【重启设备】选项可以进行设备重启，点击之后会提示是否重启软件的警告。</div></blockquote>
+</div>
+<div class="section" id="id23">
+<h3>数据导出<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>点击【数据导出】选项，弹出数据选择对话框。默认导出 ”所有数据“。也可以选择时间段进行导出。</p>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="../../_images/data_select.png" src="../../_images/data_select.png" />
+</div>
+<div class="figure align-center">
+<img alt="../../_images/data_view.png" src="../../_images/data_view.png" />
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modbus_ms.html" class="btn btn-neutral float-right" title="MODBUS 主从模式使用说明书" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="上位机使用手册" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

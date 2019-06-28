@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Modbus RTU协议使用 &mdash; 天星智联产品使用手册  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="天星智联产品使用手册  文档" href="../index.html"/>
+        <link rel="up" title="能见度传感器" href="index.html"/>
+        <link rel="prev" title="能见度传感器 通信与调试" href="protocol_debug.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 天星智联产品使用手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sddlgr/index.html">智能数据采集仪</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">能见度传感器</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">能见度传感器 用户指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol_debug.html">能见度传感器 通信与调试</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Modbus RTU协议使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">模式切换</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ascii-modbus">ASCII -&gt; Modbus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modbus-ascii">Modbus -&gt; ASCII</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Modbus RTU 通信参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Modbus RTU 寄存器地址映射</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">天星智联产品使用手册</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">能见度传感器</a> &raquo;</li>
+      
+    <li>Modbus RTU协议使用</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/visinr/modbus.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="modbus-rtu">
+<h1>Modbus RTU协议使用<a class="headerlink" href="#modbus-rtu" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>模式切换<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="ascii-modbus">
+<h3>ASCII -&gt; Modbus<a class="headerlink" href="#ascii-modbus" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>在ASCII模式的命令模式下，即在工作模式在 0~3 时，输入 <code class="docutils literal"><span class="pre">OPEN</span> <span class="pre">ID</span></code> 之后，输入 <code class="docutils literal"><span class="pre">MODE</span> <span class="pre">4</span></code> 。 能见度传感器 将自动重启至 Modbus RTU模式。</div></blockquote>
+</div>
+<div class="section" id="modbus-ascii">
+<h3>Modbus -&gt; ASCII<a class="headerlink" href="#modbus-ascii" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>在Modbus RTU模式下，修改寄存器9 的值为 0~3，则 能见度传感器 自动重启至ASCII模式。</div></blockquote>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Modbus RTU 通信参数<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>modbus地址的修改需要进入 工作模式0~3 ，使用 ID命令来修改</p>
+<p>modbus地址为 ID命令输入的数值加一，默认为 1。范围为 1~101</p>
+<p>串行通信参数与工作模式0~3共用，须在ASCII模式下修改</p>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>Modbus RTU 寄存器地址映射<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="39%" />
+<col width="15%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">保存寄存器地址</th>
+<th class="head">含义</th>
+<th class="head">字节数</th>
+<th class="head">操作</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>15秒能见度高16位</td>
+<td>2</td>
+<td>只读</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>15秒能见度低16位</td>
+<td>2</td>
+<td>只读</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>60秒能见度低16位</td>
+<td>2</td>
+<td>只读</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>60秒能见度低16位</td>
+<td>2</td>
+<td>只读</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>报警状态</td>
+<td>2</td>
+<td>只读</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>报警阈值1高16位</td>
+<td>2</td>
+<td>读写</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>报警阈值1低16位</td>
+<td>2</td>
+<td>读写</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>报警阈值2高16位</td>
+<td>2</td>
+<td>读写</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>报警阈值2低16位</td>
+<td>2</td>
+<td>读写</td>
+</tr>
+<tr class="row-odd"><td>9</td>
+<td>工作模式</td>
+<td>2</td>
+<td>读写</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p class="first">能见度与报警阈值格式</p>
+<blockquote>
+<div><p>数值=高16位 * 65536 + 低16位</p>
+</div></blockquote>
+</li>
+<li><p class="first">报警状态格式</p>
+<blockquote>
+<div><ul>
+<li><p class="first">高字节为阈值报警状态</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="39%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">60秒能见度</th>
+<th class="head">范围</th>
+<th class="head">数值</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td></td>
+<td>小于阈值1</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>大于阈值2</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>其他</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first">低字节为设备故障状态</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="7%" />
+<col width="29%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">定义</th>
+<th class="head">数值</th>
+<th class="head">含义</th>
+<th class="head">详细</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>#define POWER_ERROR</td>
+<td>0x01</td>
+<td>供电电压异常</td>
+<td>小于9V</td>
+</tr>
+<tr class="row-odd"><td>#define TEMP_H_ERROR</td>
+<td>0x02</td>
+<td>激光头高温超限</td>
+<td>大于50摄氏度</td>
+</tr>
+<tr class="row-even"><td>#define TEMP_L_ERROR</td>
+<td>0x04</td>
+<td>激光头低温超限</td>
+<td>小于0摄氏度</td>
+</tr>
+<tr class="row-odd"><td>#define LENS_ERROR</td>
+<td>0x08</td>
+<td>镜头污染</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">工作模式</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">读取时为4</div>
+<div class="line">写入范围 0~3。 写入后自动重启至新的工作模式。</div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<div class="figure align-center">
+<img alt="../_images/modbus.jpg" src="../_images/modbus.jpg" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="protocol_debug.html" class="btn btn-neutral" title="能见度传感器 通信与调试" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

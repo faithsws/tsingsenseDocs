@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>能见度传感器 通信与调试 &mdash; 天星智联产品使用手册  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="天星智联产品使用手册  文档" href="../index.html"/>
+        <link rel="up" title="能见度传感器" href="index.html"/>
+        <link rel="next" title="Modbus RTU协议使用" href="modbus.html"/>
+        <link rel="prev" title="能见度传感器 用户指南" href="introduction.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 天星智联产品使用手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sddlgr/index.html">智能数据采集仪</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">能见度传感器</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">能见度传感器 用户指南</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">能见度传感器 通信与调试</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">通信</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">仪器工作命令设置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">仪器数据管理命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">数据格式与工作模式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">设备常见问题解决办法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">信息丢失</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">信息存在，但能见度值总为0或满量程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modbus.html">Modbus RTU协议使用</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">天星智联产品使用手册</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">能见度传感器</a> &raquo;</li>
+      
+    <li>能见度传感器 通信与调试</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/visinr/protocol_debug.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="device">
+<span id="id1"></span><h1>能见度传感器 通信与调试<a class="headerlink" href="#device" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>通信<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>仪器工作命令设置<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>开机送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ADDR</span><span class="p">:</span><span class="mi">0</span> <span class="n">MODE</span><span class="p">:</span><span class="mi">1</span> <span class="n">UART</span><span class="p">:</span><span class="mi">9600</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>提示当前设备通信参数。</p>
+<p>进入工作命令模式需要键入如下命令:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">OPEN</span> <span class="n">ID</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>回传:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Command</span> <span class="n">Mode</span> <span class="n">Open</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>工作命令模式关闭需要键入如下命令:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CLSE</span> <span class="n">ID</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>回传:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Command</span> <span class="n">Mode</span> <span class="n">Close</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">命令模式进入后60秒无任何命令键入则自动关闭命令模式。如果需要再次管理设备，需要重新进入命令模式。</p>
+</div>
+<blockquote>
+<div><p>只有在 <strong>工作命令模式进入状态</strong> 中，才可响应如下格式的命令：</p>
+<p>命令格式:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">COMMAND</span> <span class="n">par1</span> <span class="o">...</span> <span class="n">parn</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>其中：</p>
+<blockquote>
+<div><blockquote>
+<div>COMMAND          为用户给出的命令；
+par1 ... parn    为命令中可能的参数，以空格隔开。</div></blockquote>
+<p>具体仪器工作命令有以下4类：初始工作设置命令、仪器参数设置命令、仪器校准命令和仪器复位。</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3>仪器数据管理命令<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id5">
+<h4>串行通信参数设置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><p>命令格式:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UART</span> <span class="n">bps</span><span class="p">,</span><span class="n">O</span><span class="o">/</span><span class="n">E</span><span class="o">/</span><span class="n">N</span><span class="p">,</span><span class="mi">7</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">bps的值为00300、00600、01200、02400、04800、09600、19200、115200;</div>
+<div class="line">O/E/N表示奇/偶/无校验;</div>
+<div class="line">7/8表示数据位数；</div>
+<div class="line">1/2表示停止位数；</div>
+</div>
+<p>举例:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UART</span> <span class="mi">1200</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>成功送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UART</span> <span class="n">OK</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>不成功送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UART</span> <span class="n">ERROR</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>出厂默认9600bps，无校验，8位数据，1位停止。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id">
+<h4>地址ID设置<a class="headerlink" href="#id" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><p>命令格式:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ID</span> <span class="n">par</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>par 的值为00—99</p>
+<p>成功后送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ID</span> <span class="n">OK</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>否则送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ID</span> <span class="n">ERROR</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>出厂默认ID=00。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h4>工作模式设置<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><p>命令格式:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MODE</span> <span class="n">par</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>par ：0—3种工作模式
+成功后送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MODE</span> <span class="n">OK</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>否则送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MODE</span> <span class="n">ERROR</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>0—2模式为自动上传数据模式，0模式输出时间间隔15秒，1、2模式间隔60秒。3模式是被动招测模式，内部数据更新率为60秒。</p>
+<p>出厂默认为0模式。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h4>报警阈值设置<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><p>两个报警阈值:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">LMT1</span> <span class="n">par</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+<span class="mf">2.</span> <span class="n">LMT2</span> <span class="n">par</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>LMT1的参数par为报警的下限值，LMT2的参数par为报警的上限值。</p>
+<p>成功后送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LMT</span> <span class="n">OK</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>否则送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LMT</span> <span class="n">ERROR</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">要求必须LMT1&lt;LMT2，用户可将这两位设置成最关心的能见度变化点，从而将能见度分为三个警戒段：〉LMT2为正常段，LMT1—LMT2为警戒段1，〈 LMT1为警戒段2。警戒状态值在数据状态数值的第一位显示。</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h4>主站招测命令<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><p>在工作模式3下，上位机从 能见度传感器 获取能见度数值。</p>
+<p>命令格式:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DRAW</span> <span class="n">ID</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>成功后送出:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="n">分钟内的能见度数值</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;&lt;</span><span class="n">lf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>数据格式与工作模式<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>数据格式：</p>
+<div class="figure align-center">
+<img alt="../_images/data_format.jpg" src="../_images/data_format.jpg" />
+</div>
+</div></blockquote>
+<div class="section" id="id10">
+<h4>工作模式0<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div>每15秒主动上传数据</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h4>工作模式1<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div>每60秒主动上传数据</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h4>工作模式2<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div>每1分钟主动上传数据，属于厂家出厂前的调试模式，用户不需使用</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h4>工作模式3<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><p>接收主站招测命令：<code class="docutils literal"><span class="pre">DRAW</span> <span class="pre">ID</span></code></p>
+<p>回传格式与工作模式1相同。 属于被动招测模式，内部数据更新率为1分钟。</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>设备常见问题解决办法<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id15">
+<h3>信息丢失<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">你的主台显示软件通讯设置正确吗？</p>
+<blockquote>
+<div><ul class="simple">
+<li>改变波特率，比如改变到1200bps</li>
+<li>检查你的串口参数设置是否正确</li>
+<li>试一下OPEN命令或CLSE命令</li>
+<li>试其它的命令</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">到能见度仪工作现场</p>
+<blockquote>
+<div><ul class="simple">
+<li>带着便携维护计算机（带串口的笔记本电脑）、工具到能见度仪工作现场，制作简易三线通讯线，将信号直接用便携计算机接收，以排除长距离通讯线缆故障</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">能见度仪是否处于通电状态？</p>
+<blockquote>
+<div><ul class="simple">
+<li>用万用表量一下电源接线端子上有无直流电压供给。电压是否在 9V ~ 24V之间。电源驱动能力是否足够。</li>
+<li>线缆是否连接紧密</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id16">
+<h3>信息存在，但能见度值总为0或满量程<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>检查输出状态数值是否为接收器故障报警</li>
+<li>到能见度仪工作现场检查接收器板上的电缆接头是否松动</li>
+<li>接收器可能损坏，可与厂家联系</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modbus.html" class="btn btn-neutral float-right" title="Modbus RTU协议使用" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="introduction.html" class="btn btn-neutral" title="能见度传感器 用户指南" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
