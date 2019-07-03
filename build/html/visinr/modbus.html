@@ -94,6 +94,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Modbus RTU 通信参数</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Modbus RTU 寄存器地址映射</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Modbus RTU通信示例</a></li>
 </ul>
 </li>
 </ul>
@@ -331,9 +332,43 @@
 </li>
 </ul>
 </div></blockquote>
-<div class="figure align-center">
-<img alt="../_images/modbus.jpg" src="../_images/modbus.jpg" />
 </div>
+<div class="section" id="id4">
+<h2>Modbus RTU通信示例<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">读取所有寄存器</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">000000</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">03</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">0</span><span class="n">A</span> <span class="n">C5</span> <span class="n">CD</span>
+<span class="mi">000001</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">03</span> <span class="mi">14</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="n">FE</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">04</span> <span class="n">D0</span> <span class="n">CA</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<div class="figure align-center">
+<img alt="../_images/modbus_pull.jpg" src="../_images/modbus_pull.jpg" />
+</div>
+<blockquote>
+<div><ul>
+<li><p class="first">读取 60s能见度:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">000018</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">03</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">65</span> <span class="n">CB</span>
+<span class="mi">000019</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">03</span> <span class="mi">04</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="n">FE</span> <span class="mi">7</span><span class="n">A</span> <span class="mi">23</span>               <span class="c1">#能见度为510m</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">设置报警值:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">000000</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">05</span> <span class="mi">00</span> <span class="mi">04</span> <span class="mi">08</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">64</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">4</span><span class="n">E</span> <span class="mi">20</span> <span class="n">FF</span> <span class="n">C6</span>  <span class="c1">#低阈值100，高阈值20000</span>
+<span class="mi">000001</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">05</span> <span class="mi">00</span> <span class="mi">04</span> <span class="n">D1</span> <span class="n">CB</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">切换工作模式到0:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">000000</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">06</span> <span class="mi">00</span> <span class="mi">09</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">59</span> <span class="n">C8</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
