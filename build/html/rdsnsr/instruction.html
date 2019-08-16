@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>遥感式路面传感器用户指南 &mdash; 天星智联产品使用手册  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="天星智联产品使用手册  文档" href="../index.html"/>
+        <link rel="up" title="红外遥感式路面传感器" href="index.html"/>
+        <link rel="next" title="路面传感器ASCII通讯协议" href="protocol_ascii.html"/>
+        <link rel="prev" title="红外遥感式路面传感器" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 天星智联产品使用手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sddlgr/index.html">智能数据采集仪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visinr/index.html">能见度传感器</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">红外遥感式路面传感器</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">遥感式路面传感器用户指南</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1、产品介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2、主要指标</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3、对外接口</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">通讯端口</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">端口连接</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">通信协议</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">4、按键与红色激光指示灯</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">位置指示</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">干标定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">镜头清洁标定</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">5、安装方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="protocol_ascii.html">路面传感器ASCII通讯协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modbus.html">路面传感器ModBus RTU通讯协议</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">天星智联产品使用手册</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">红外遥感式路面传感器</a> &raquo;</li>
+      
+    <li>遥感式路面传感器用户指南</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/rdsnsr/instruction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>遥感式路面传感器用户指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>1、产品介绍<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>遥感式路面传感器，采用了遥感技术，避免了对道路的破坏，从而不会因为安装道路气象站而引起对交通的干扰。利用多光谱测量技术能够准确检测出道路表面状态，比如结冰、积雪和积水，以及对应的厚度。
+在埋入式路面传感器不便或不能安装的路面条件下，遥感式路面传感器是最理想的选择。遥感安装，意味着不需要封闭道路、不需要切割路面，安装工作既安全又方便。维护量少，是道路气象系统组成中一项理想选择。它既可以安装在现有的气象站上，也可以安装在路面视野无遮挡的其他建筑物上。
+遥感式路面传感器被安装在一个全天候、耐久的外壳中，以保证承受恶劣天气，这使得它在任何天气条件下能提供精准数据。
+通过提供路面条件信息，遥感式路面传感器为道路管理部门提供准确的监测数据，在道路安全出现险情之前，采取相应措施。</p>
+<blockquote>
+<div><ul class="simple">
+<li>功能</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>检测路面积水、积雪、结冰厚度</li>
+<li>远距离遥感检测路面状况</li>
+<li>非埋入式安装快捷简便</li>
+<li>维护成本低</li>
+<li>融入现有公路自动气象监测网络</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>应用</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>远距离安装</li>
+<li>桥面</li>
+<li>事故多发区域</li>
+<li>车流量大的区域</li>
+<li>雨雪多发地区</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>特点</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>远距离测量路面积水、冰和雪</li>
+<li>测量路面状态</li>
+<li>测量积水、冰面、湿滑程度</li>
+<li>非埋入式设计</li>
+<li>抗锈蚀</li>
+<li>红外检测最远 10 米</li>
+<li>无需封闭车道，安装维护简单</li>
+<li>坚固设计，全天候测量</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>2、主要指标<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>监测距离</td>
+<td>2-10米</td>
+</tr>
+<tr class="row-even"><td>检测直径</td>
+<td>30 cm</td>
+</tr>
+<tr class="row-odd"><td>角度</td>
+<td>10-70度</td>
+</tr>
+<tr class="row-even"><td>电源输入</td>
+<td>9-30VDC</td>
+</tr>
+<tr class="row-odd"><td>最大功耗</td>
+<td>4W（非除雾加热状态）</td>
+</tr>
+<tr class="row-even"><td>工作温度</td>
+<td>-40 ºC 至 +70 ºC</td>
+</tr>
+<tr class="row-odd"><td>工作湿度</td>
+<td>0 至 100%</td>
+</tr>
+<tr class="row-even"><td>路面状态输出</td>
+<td>水：0.00—10mm</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>冰：0.00—5mm</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>雪：0.00—10mm</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>湿滑程度：0.01—1</td>
+</tr>
+<tr class="row-even"><td>精度</td>
+<td>0.01mm</td>
+</tr>
+<tr class="row-odd"><td>镜头污染检测</td>
+<td>光学镜头的污染等级测量及内部自动污染补偿</td>
+</tr>
+<tr class="row-even"><td>路面</td>
+<td>混凝土、沥青路面</td>
+</tr>
+<tr class="row-odd"><td>通讯</td>
+<td>RS485</td>
+</tr>
+<tr class="row-even"><td>平均无故障</td>
+<td>1.5 x 1000000 小时</td>
+</tr>
+<tr class="row-odd"><td>安全</td>
+<td>无安全问题 – 红外遥感测量技术</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>3、对外接口<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>传感器对外部提供6根通信线，定义分别为：</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>颜色</td>
+<td>红</td>
+<td>黑</td>
+<td>黄</td>
+<td>白</td>
+<td>蓝</td>
+<td>绿</td>
+</tr>
+<tr class="row-even"><td>定义</td>
+<td>电源正</td>
+<td>电源负</td>
+<td>RS485A</td>
+<td>RS485B</td>
+<td>按键</td>
+<td>按键</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<div class="section" id="id5">
+<h3>通讯端口<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>物理端口定义</p>
+<blockquote>
+<div><ul class="simple">
+<li>起始位——1bit</li>
+<li>停止位——1bit</li>
+<li>数据位——8bits</li>
+<li>校验位——none</li>
+<li>波特率——9600bps</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h3>端口连接<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>仪器与外部设备之间通过RS485 进行。</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h3>通信协议<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>传感器支持ASCII协议以及Modbus RTU协议，具体通信格式参考对应文档。</div></blockquote>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>4、按键与红色激光指示灯<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id9">
+<h3>位置指示<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>开启指示灯</li>
+</ul>
+<blockquote>
+<div>在红色激光指示灯关闭状态下，长按按键超过2秒再抬起，开启指示灯。该功能主要用于安装时指示测试位置点。</div></blockquote>
+<ul class="simple">
+<li>关闭指示灯</li>
+</ul>
+<blockquote>
+<div>在红色激光指示灯开启状态下，长按按键2秒再抬起，关闭指示灯。</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h3>干标定<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>在对准要的测试的路面点后，连续按按键2次（间隔小于0.5秒），执行干标定。安装时须执行该操作，使测试数据更准确。</p>
+<p>标定完成时，红色激光再次点亮2秒，提示标定完成。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h3>镜头清洁标定<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>在镜头清洁，没有结雾和污染情况下，连续按按键6次（间隔小于0.5秒），采集镜头清洁时值，该值在镜头检测功能中作为参考。在初次安装时须执行该操作。</p>
+<p>操作完成时，红色激光再次点亮2秒，提示操作完成。</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>5、安装方法<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>安装位置</li>
+</ul>
+<blockquote>
+<div>安装路面传感器推荐使用直径8cm以上立柱，高度大于3m。传感器与立杆角度10 ~ 70度 。直射距离2m~10m。确保直射光路无遮挡，红色激光指示位置为沥青路面，无其他遮挡物。</div></blockquote>
+<ul>
+<li><p class="first">安装步骤</p>
+<blockquote>
+<div><ul class="simple">
+<li><ol class="first arabic">
+<li>选择天气晴朗，空气湿度低的天气进行安装</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="2">
+<li>安装时，确保被测路面状态为干燥状态</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="3">
+<li>按照上述推荐安装位置进行传感器固定。可以利用位置指示功能，对焦被测路面。</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="4">
+<li>确定被测路面后，进行“干标定”，并等待标定完成</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="5">
+<li>“干标定”完成后，进行“镜头清洁标定”，并等待完成。</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="6">
+<li>重新上电</li>
+</ol>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="protocol_ascii.html" class="btn btn-neutral float-right" title="路面传感器ASCII通讯协议" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="红外遥感式路面传感器" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

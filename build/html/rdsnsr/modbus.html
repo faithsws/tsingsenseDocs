@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>路面传感器ModBus RTU通讯协议 &mdash; 天星智联产品使用手册  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="天星智联产品使用手册  文档" href="../index.html"/>
+        <link rel="up" title="红外遥感式路面传感器" href="index.html"/>
+        <link rel="prev" title="路面传感器ASCII通讯协议" href="protocol_ascii.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 天星智联产品使用手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sddlgr/index.html">智能数据采集仪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visinr/index.html">能见度传感器</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">红外遥感式路面传感器</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="instruction.html">遥感式路面传感器用户指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol_ascii.html">路面传感器ASCII通讯协议</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">路面传感器ModBus RTU通讯协议</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1、物理端口定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2、内存地址映射</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3、寄存器说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modbus">地址0  modbus设备地址  无符号整型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">地址2  路面温度  有符号整型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">地址3  积水深度  无符号整型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">地址4  冰厚度  无符号整型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">地址5  雪厚度  无符号整型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">地址6  湿滑系数  无符号整型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">地址7  路面状态  无符号整型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">地址8  硬件状态  无符号整型</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">4、通信示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">天星智联产品使用手册</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">红外遥感式路面传感器</a> &raquo;</li>
+      
+    <li>路面传感器ModBus RTU通讯协议</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/rdsnsr/modbus.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="modbus-rtu">
+<h1>路面传感器ModBus RTU通讯协议<a class="headerlink" href="#modbus-rtu" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>1、物理端口定义<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>起始位——1bit</li>
+<li>停止位——1bit</li>
+<li>数据位——8bits</li>
+<li>校验位——none</li>
+<li>波特率——9600bps</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>2、内存地址映射<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="47%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">寄存器地址</th>
+<th class="head">含义</th>
+<th class="head">操作</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>设备地址（1~246）</td>
+<td>读写</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>无意义</td>
+<td>只读</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>路面温度x100</td>
+<td>只读</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>积水深度x100</td>
+<td>只读</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>冰厚度x100</td>
+<td>只读</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>雪厚度x100</td>
+<td>只读</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>湿滑系数x100</td>
+<td>只读</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>路面状态码</td>
+<td>只读</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>硬件状态码</td>
+<td>只读</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>3、寄存器说明<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>可以通过读保持寄存器命令(0x03)，获取以下寄存器数值; 写单个保持寄存器命令(0x06),修改设备地址。</div></blockquote>
+<div class="section" id="modbus">
+<h3>地址0  modbus设备地址  无符号整型<a class="headerlink" href="#modbus" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>地址范围 1~246。修改地址后，重新上电生效。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="33%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">地址</th>
+<th class="head">内容</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>0x0001</td>
+<td>地址为1</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3>地址2  路面温度  有符号整型<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>数值为实际温度乘以100。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="33%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">地址</th>
+<th class="head">内容</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2</td>
+<td>0x07EE</td>
+<td>20.3摄氏度</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h3>地址3  积水深度  无符号整型<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>数值为实际深度乘以100。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="33%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">地址</th>
+<th class="head">内容</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>3</td>
+<td>0x09C4</td>
+<td>2.5mm</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h3>地址4  冰厚度  无符号整型<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>数值为实际厚度乘以100。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="33%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">地址</th>
+<th class="head">内容</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>4</td>
+<td>0x0C80</td>
+<td>3.2mm</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h3>地址5  雪厚度  无符号整型<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>数值为实际厚度乘以100。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="33%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">地址</th>
+<th class="head">内容</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>5</td>
+<td>0x10CC</td>
+<td>4.3mm</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h3>地址6  湿滑系数  无符号整型<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>数值为实际数值乘以100。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="33%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">地址</th>
+<th class="head">内容</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>6</td>
+<td>0x0052</td>
+<td>0.82</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id9">
+<h3>地址7  路面状态  无符号整型<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="33%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">地址</th>
+<th class="head">内容</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>7</td>
+<td>0x0106</td>
+<td>雪 报警</td>
+</tr>
+</tbody>
+</table>
+<p><strong>数值含义</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">W(警告) 高字节</th>
+<th class="head">S(路面状态) 低字节</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0 NO WARNING (无警告)</td>
+<td>0 ERROR(出错)</td>
+</tr>
+<tr class="row-odd"><td>1 WARNING (警告)</td>
+<td>1 DRY(干)</td>
+</tr>
+<tr class="row-even"><td>2 ALARM (报警)</td>
+<td>2 MOIST(潮)</td>
+</tr>
+<tr class="row-odd"><td>3 FROST WARNING (霜警告)</td>
+<td>3 WET(湿)</td>
+</tr>
+<tr class="row-even"><td>4 预留</td>
+<td>4 预留</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>5 预留</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>6 SNOW(雪)</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>7 ICE(冰)</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>8 预留</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>9 SLUSHY(泥泞)</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h3>地址8  硬件状态  无符号整型<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="18%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">地址</th>
+<th class="head">内容</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>8</td>
+<td>0x0202</td>
+<td>接收器窗污染严重;检测器硬件警告</td>
+</tr>
+</tbody>
+</table>
+<p><strong>数值含义</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">W(警告) 高字节</th>
+<th class="head">S(路面状态) 低字节</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0 接收器窗清洁</td>
+<td>0 硬件OK</td>
+</tr>
+<tr class="row-odd"><td>1 警告-接收器窗污染</td>
+<td>1 CPU硬件警告</td>
+</tr>
+<tr class="row-even"><td>2 报警-接收器窗污染严重</td>
+<td>2 激光器警告</td>
+</tr>
+<tr class="row-odd"><td>3 预留</td>
+<td>3 其他警告</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>4、通信示例<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p><strong>读取路面状态</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>TX:01 03 00 00 00 09 C5 CD
+- 01：设备地址
+- 03：读保持寄存器功能码
+- 00 00：寄存器地址
+- 00 09：读取寄存器个数
+- C5 CD：CRC校验码
+
+RX:01 03 12 00 01 00 00 08 FB 00 06 00 00 00 00 00 51 00 02 00 00 B2 24
+- 01：设备地址
+- 03：03功能码
+- 12：数据字节，18
+- 00 01：地址寄存器数据，1
+- 00 00：寄存器2数据，暂时无用
+- 08 FB：温度寄存器数据，22.99度
+- 00 06：水深寄存器数据，0.06mm
+- 00 00：冰厚寄存器数据，0.00mm
+- 00 00：雪厚寄存器数据，0.00mm
+- 00 51：湿滑系数寄存器数据，0.81
+- 00 02：路面状态码寄存器数据，02代表湿
+- 00 00：硬件状态码寄存器数据，00代表硬件无异常
+- B2 24：CRC校验码
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="protocol_ascii.html" class="btn btn-neutral" title="路面传感器ASCII通讯协议" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1097 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>路面传感器ASCII通讯协议 &mdash; 天星智联产品使用手册  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="天星智联产品使用手册  文档" href="../index.html"/>
+        <link rel="up" title="红外遥感式路面传感器" href="index.html"/>
+        <link rel="next" title="路面传感器ModBus RTU通讯协议" href="modbus.html"/>
+        <link rel="prev" title="遥感式路面传感器用户指南" href="instruction.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 天星智联产品使用手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sddlgr/index.html">智能数据采集仪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visinr/index.html">能见度传感器</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">红外遥感式路面传感器</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="instruction.html">遥感式路面传感器用户指南</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">路面传感器ASCII通讯协议</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1、通讯端口</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">（1）物理端口定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">（2）端口连接</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xxh16">（3）数据帧格式（xxH表示16进制）</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#h">2、通讯协议（以地址01H说明）</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">（1）查询当前路面状态1（47H）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">（2）查询当前路面状态2（48H）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">（3）查询当前干标定值（49H）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bh">（4）查询清洁参考值（4BH）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ch">（5）设置清洁参考值（4CH）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">（6）查询仪器通讯（00H）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aah">（7）查询或设置仪器地址（AAH）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">(8) 设置仪器地址 （AAH）</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lrc">3、附录 LRC校验</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clrc">(1)用一个C语言功能码产生LRC值。</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">(2)4个字节转换为浮点数。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modbus.html">路面传感器ModBus RTU通讯协议</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">天星智联产品使用手册</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">红外遥感式路面传感器</a> &raquo;</li>
+      
+    <li>路面传感器ASCII通讯协议</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/rdsnsr/protocol_ascii.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ascii">
+<h1>路面传感器ASCII通讯协议<a class="headerlink" href="#ascii" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>1、通讯端口<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h3>（1）物理端口定义<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>起始位——1bit</li>
+<li>停止位——1bit</li>
+<li>数据位——8bits</li>
+<li>校验位——none</li>
+<li>波特率——9600bps</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h3>（2）端口连接<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>仪器与外部设备之间通过RS485 进行。</div></blockquote>
+</div>
+<div class="section" id="xxh16">
+<h3>（3）数据帧格式（xxH表示16进制）<a class="headerlink" href="#xxh16" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="35%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">代码</th>
+<th class="head">含义</th>
+<th class="head">值</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>TX</td>
+<td>起始字符</td>
+<td>: =（3AH）</td>
+</tr>
+<tr class="row-odd"><td>DR</td>
+<td>设备通讯地址</td>
+<td>默认（01H）</td>
+</tr>
+<tr class="row-even"><td>MD</td>
+<td>命令码</td>
+<td>(00H-FFH)</td>
+</tr>
+<tr class="row-odd"><td>ataNum</td>
+<td>字节数</td>
+<td>(00H-FFH)</td>
+</tr>
+<tr class="row-even"><td>ATA(0)</td>
+<td>数据项0</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>…</td>
+<td>……</td>
+<td>……</td>
+</tr>
+<tr class="row-even"><td>ATA(n-1)</td>
+<td>数据项n-1</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>RC CHK</td>
+<td>LRC校验</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>ND 1</td>
+<td>结束字符1</td>
+<td>&lt;CR&gt;（0DH）</td>
+</tr>
+<tr class="row-odd"><td>ND 0</td>
+<td>结束字符0</td>
+<td>&lt;LF&gt;（0AH）</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt>STX（起始字符）</dt>
+<dd>: =  3AH</dd>
+<dt>ADR（通讯地址）</dt>
+<dd>有效通讯地址范围00H-20H，默认设备地址01H</dd>
+<dt>CMD（命令码）</dt>
+<dd>47H  查询当前路面参数        路面的各种参数</dd>
+<dt>DataNum（数据字节数）</dt>
+<dd>从DATA(0)到DATA(n-1)的字节数，共n项</dd>
+<dt>LRC（校验）</dt>
+<dd>LRC =( ~((ADR + CMD + DataNum + DATA(0)+ …… + DATA(n-1))&amp;0xFF ))+ 1</dd>
+<dt>END（结束字符）</dt>
+<dd>END1= &lt;CR&gt;(0DH)，END0= &lt;LF&gt;(0AH)</dd>
+</dl>
+<p>起始和结束字符外，整个数据帧传输以ASCII编码方式传输</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="42%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TX</th>
+<th class="head">起始字符</th>
+<th class="head">:=（3AH）</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DR.HB</td>
+<td>设备通讯地址高半字节</td>
+<td>默认=30H</td>
+</tr>
+<tr class="row-odd"><td>DR.LB</td>
+<td>设备通讯地址低半字节</td>
+<td>默认=31H</td>
+</tr>
+<tr class="row-even"><td>MD.HB</td>
+<td>命令码高半字节</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>MD.LB</td>
+<td>命令码低半字节</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>ataNum.HB</td>
+<td>字节数高半字节</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>ataNum.LB</td>
+<td>字节数低半字节</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>ATA(0).HB</td>
+<td>数据项0高半字节</td>
+<td>设备响应</td>
+</tr>
+<tr class="row-odd"><td>ATA(0).LB</td>
+<td>数据项0低半字节</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>…</td>
+<td>……</td>
+<td>……</td>
+</tr>
+<tr class="row-odd"><td>ATA(n-1).HB</td>
+<td>数据项（n-1）高半字节</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>ATA(n-1).LB</td>
+<td>数据项（n-1）低半字节</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>RC CHK.HB</td>
+<td>校验和高半字节</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>RC CHK.LB</td>
+<td>校验和低半字节</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>ND1</td>
+<td>结束字符1</td>
+<td>&lt;CR&gt; =（0DH）</td>
+</tr>
+<tr class="row-even"><td>ND0</td>
+<td>结束字符0</td>
+<td>&lt;LF&gt; =（0AH）</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>中间各字节分别取其高半字节和低半字节，转为ASCII码。
+设备地址为21H，则ADR.HB =32H, ADR.LB =31H,其余字节雷同</p>
+<p><strong>通讯响应</strong></p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">指令编码</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1H</td>
+<td>设备错误响应</td>
+</tr>
+<tr class="row-odd"><td>2H</td>
+<td>设备正确响应</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>错误响应编码</strong></p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">错误响应</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1H</td>
+<td>通讯地址错误</td>
+</tr>
+<tr class="row-odd"><td>2H</td>
+<td>命令码不存在</td>
+</tr>
+<tr class="row-even"><td>3H</td>
+<td>内存数据不存在</td>
+</tr>
+<tr class="row-odd"><td>7H</td>
+<td>错误校验和</td>
+</tr>
+<tr class="row-even"><td>…</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="h">
+<h2>2、通讯协议（以地址01H说明）<a class="headerlink" href="#h" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h3>（1）查询当前路面状态1（47H）<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><p>PC -&gt; 传感器</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>地址码ADR</td>
+<td>01H</td>
+</tr>
+<tr class="row-even"><td>命令码CMD</td>
+<td>47H</td>
+</tr>
+<tr class="row-odd"><td>字节数Bytes</td>
+<td>00H</td>
+</tr>
+<tr class="row-even"><td>LRC</td>
+<td>B8H</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>数据帧结构</strong></dt>
+<dd>:014700B8&lt;CR&gt;&lt;LF&gt;</dd>
+</dl>
+<p><strong>正确响应</strong></p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>地址码ADR</td>
+<td>01H</td>
+</tr>
+<tr class="row-even"><td>命令码CMD</td>
+<td>47H</td>
+</tr>
+<tr class="row-odd"><td>字节数DataNum</td>
+<td>18H</td>
+</tr>
+<tr class="row-even"><td>响应</td>
+<td>A2H</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA0.DH</td>
+<td>路面温度. 高字节</td>
+</tr>
+<tr class="row-even"><td>数据项DATA0.DM1</td>
+<td>路面温度.中间字节1</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA0.DM2</td>
+<td>路面温度.中间字节2</td>
+</tr>
+<tr class="row-even"><td>数据项DATA0.DL</td>
+<td>路面温度. 低字节</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA1.DH</td>
+<td>水膜的厚度.高字节</td>
+</tr>
+<tr class="row-even"><td>数据项DATA1.DM1</td>
+<td>水膜的厚度</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA1.DM2</td>
+<td>水膜的厚度</td>
+</tr>
+<tr class="row-even"><td>数据项DATA1.DL</td>
+<td>水膜的厚度.低字节</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA2.DH</td>
+<td>冰的厚度.高字节</td>
+</tr>
+<tr class="row-even"><td>数据项DATA2.DM1</td>
+<td>冰的厚度</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA2.DM2</td>
+<td>冰的厚度</td>
+</tr>
+<tr class="row-even"><td>数据项DATA2.DL</td>
+<td>冰的厚度.低字节</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA3.DH</td>
+<td>雪的厚度.高字节</td>
+</tr>
+<tr class="row-even"><td>数据项DATA3.DM1</td>
+<td>雪的厚度</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA3.DM2</td>
+<td>雪的厚度</td>
+</tr>
+<tr class="row-even"><td>数据项DATA3.DL</td>
+<td>雪的厚度.低字节</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA4.DH</td>
+<td>湿滑系数.高字节</td>
+</tr>
+<tr class="row-even"><td>数据项DATA4.DM1</td>
+<td>湿滑系数</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA4.DM2</td>
+<td>湿滑系数</td>
+</tr>
+<tr class="row-even"><td>数据项DATA4.DL</td>
+<td>湿滑系数.低字节</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA5.DH</td>
+<td>路面状态.高字节（表1）</td>
+</tr>
+<tr class="row-even"><td>数据项DATA5.DL</td>
+<td>路面状态.低字节（表1）</td>
+</tr>
+<tr class="row-odd"><td>数据项DATA6</td>
+<td>硬件状态（表2、表3）</td>
+</tr>
+<tr class="row-even"><td>LRC</td>
+<td>XXH</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>数据项DATA0、DATA1、数据项DATA2、数据项DATA3、数据项DATA4 为4个字节浮点型数据。</li>
+<li>数据项DATA5 为整形数据（2个字节）</li>
+<li>数据项DATA6 为字符型(1个字节)</li>
+</ul>
+</div>
+<p>备注：</p>
+<blockquote>
+<div><p>1 路面状况 整数（数据项DATA5）</p>
+<blockquote>
+<div><p><em>表1 路面状态码</em></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">W(警告) 高字节</th>
+<th class="head">S(路面状态) 低字节</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0 NO WARNING (无警告)</td>
+<td>0 ERROR(出错)</td>
+</tr>
+<tr class="row-odd"><td>1 WARNING (警告)</td>
+<td>1 DRY(干)</td>
+</tr>
+<tr class="row-even"><td>2 ALARM (报警)</td>
+<td>2 MOIST(潮)</td>
+</tr>
+<tr class="row-odd"><td>3 FROST WARNING (霜警告)</td>
+<td>3 WET(湿)</td>
+</tr>
+<tr class="row-even"><td>4 预留</td>
+<td>4 预留</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>5 预留</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>6 SNOW(雪)</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>7 ICE(冰)</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>8 预留</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>9 SLUSHY(泥泞)</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>2 硬件状态（数据项DATA6 高字节）</p>
+<blockquote>
+<div><p><em>表2 硬件状态码（数据项DATA6 十位）</em></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">状态码</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0X</td>
+<td>接收器窗清洁</td>
+</tr>
+<tr class="row-odd"><td>1X</td>
+<td>警告-接收器窗污染</td>
+</tr>
+<tr class="row-even"><td>2X</td>
+<td>报警-接收器窗污染严重</td>
+</tr>
+<tr class="row-odd"><td>3X-9X</td>
+<td>预留</td>
+</tr>
+</tbody>
+</table>
+<p><em>表3 硬件状态码（数据项DATA6 个位）</em></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">状态码</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X0</td>
+<td>硬件OK</td>
+</tr>
+<tr class="row-odd"><td>X1</td>
+<td>CPU硬件警告</td>
+</tr>
+<tr class="row-even"><td>X2</td>
+<td>检测器硬件警告</td>
+</tr>
+<tr class="row-odd"><td>X3</td>
+<td>其它</td>
+</tr>
+<tr class="row-even"><td>X4-X9</td>
+<td>预留</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt>返回数据(ASCII):</dt>
+<dd>:014718A2C1A00000000000003F3AE1483F9AE1483DB851EC00CE16E3&lt;CR&gt;&lt;LF&gt;</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<div class="last line-block">
+<div class="line">：                     起始字符STR</div>
+<div class="line">01                    地址码ADR</div>
+<div class="line">47                    命令码CMD</div>
+<div class="line">18                    数据字节数DataNum</div>
+<div class="line">A2                    响应</div>
+<div class="line">C1 A0 00 00           路面温度(-20°C)</div>
+<div class="line">00 00 00 00           水膜的厚度(0mm)</div>
+<div class="line">3F 3A E1 48           冰的厚度(0.73mm)</div>
+<div class="line">3F 9A E1 48           雪的厚度(1.21mm)</div>
+<div class="line">3D B8 51 EC           湿滑系数(0.09)</div>
+<div class="line">00 CE                 路面状态(206)  雪   报警</div>
+<div class="line">16                    硬件状态(22)  接收器窗污染严重  检测器硬件警告</div>
+<div class="line">E3                    LRC校验码</div>
+<div class="line">&lt;CR&gt;                  结束符1(0x0d)</div>
+<div class="line">&lt;LF&gt;                  结束符2(0x0a)</div>
+</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h3>（2）查询当前路面状态2（48H）<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div>PC -&gt; 传感器</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="71%" />
+<col width="29%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>地址码ADR</td>
+<td>01H</td>
+</tr>
+<tr class="row-even"><td>命令码CMD</td>
+<td>48H</td>
+</tr>
+<tr class="row-odd"><td>字节数Bytes</td>
+<td>00H</td>
+</tr>
+<tr class="row-even"><td>LRC</td>
+<td>B7H</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>数据帧结构</strong></dt>
+<dd>:014800B7&lt;CR&gt;&lt;LF&gt;</dd>
+</dl>
+<p><strong>返回数据格式</strong></p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HONGYUV</span> <span class="n">HY</span><span class="o">-</span><span class="n">RSS11</span> <span class="n">SYSTEM</span> <span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">VERSION</span> <span class="n">V1</span><span class="o">.</span><span class="mi">30</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">ROAD</span> <span class="n">TEMP</span>  <span class="p">:</span> <span class="o">-</span><span class="mf">20.00</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">ROAD</span> <span class="n">STATE</span> <span class="p">:</span> <span class="n">DRY</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">GRIP</span>   <span class="p">:</span> <span class="mf">0.82</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">WATER</span>  <span class="p">:</span> <span class="mf">0.00</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">ICE</span>    <span class="p">:</span> <span class="mf">0.00</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">SNOW</span>   <span class="p">:</span> <span class="mf">0.00</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">CLEAN</span>  <span class="p">:</span> <span class="mf">71.9</span> <span class="n">RELATIVE</span>  <span class="mf">1.01</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">RECEIVER</span> <span class="n">WINDOWS</span> <span class="p">:</span> <span class="n">ALARM</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">HARDWARE</span> <span class="p">:</span> <span class="n">EMITTER</span> <span class="n">WARNING</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">INPUT</span> <span class="n">VOLTAGE</span> <span class="p">:</span> <span class="mf">23.4</span><span class="o">&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<div class="last line-block">
+<div class="line">ROAD TEMP  : -20.00                   路面温度</div>
+<div class="line">ROAD STATE : DRY                      显示路面状态，如有警告或报警，后续紧跟着显示</div>
+<div class="line">GRIP  :0.82                           湿滑系数（0~1）</div>
+<div class="line">WATER  : 0.00                         水膜厚度</div>
+<div class="line">ICE    : 0.00                         冰的厚度</div>
+<div class="line">SNOW   : 0.00                         雪的厚度</div>
+<div class="line">CLEAN  : 71.9                         当前接收器窗清洁值</div>
+<div class="line">RELATIVE  1.01                                当前清洁系数</div>
+<div class="line">RECEIVER WINDOWS : ALARM              接收器窗状态</div>
+<div class="line">HARDWARE : EMITTER WARNING            硬件状态</div>
+<div class="line">INPUT VOLTAGE : 23.4                  输入电压</div>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h3>（3）查询当前干标定值（49H）<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><p>PC -&gt; 传感器</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="68%" />
+<col width="32%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>地址码ADR</td>
+<td>01H</td>
+</tr>
+<tr class="row-even"><td>命令码CMD</td>
+<td>49H</td>
+</tr>
+<tr class="row-odd"><td>字节数Bytes</td>
+<td>00H</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>数据帧结构</strong></dt>
+<dd>:014900B6&lt;CR&gt;&lt;LF&gt;</dd>
+</dl>
+<p><strong>返回数据格式</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dry</span><span class="p">:</span>   <span class="mi">24940</span>   <span class="mi">1570</span>   <span class="mi">900</span><span class="o">&lt;</span><span class="n">CR</span><span class="o">&gt;&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+<span class="n">wet</span><span class="p">:</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span><span class="o">&lt;</span><span class="n">CR</span><span class="o">&gt;&lt;</span><span class="n">LF</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="bh">
+<h3>（4）查询清洁参考值（4BH）<a class="headerlink" href="#bh" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><p>PC -&gt; 传感器</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>地址码ADR</td>
+<td>01H</td>
+</tr>
+<tr class="row-even"><td>命令码CMD</td>
+<td>4BH</td>
+</tr>
+<tr class="row-odd"><td>字节数Bytes</td>
+<td>00H</td>
+</tr>
+<tr class="row-even"><td>LRC</td>
+<td>B4H</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>数据帧结构</strong></dt>
+<dd>:014B00B4&lt;CR&gt;&lt;LF&gt;</dd>
+<dt><strong>返回数据格式</strong></dt>
+<dd>CLEAN RX:   11.1&lt;CR&gt;&lt;LF&gt;</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="ch">
+<h3>（5）设置清洁参考值（4CH）<a class="headerlink" href="#ch" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><p>PC -&gt; 传感器</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>地址码ADR</td>
+<td>01H</td>
+</tr>
+<tr class="row-even"><td>命令码CMD</td>
+<td>4CH</td>
+</tr>
+<tr class="row-odd"><td>字节数Bytes</td>
+<td>00H</td>
+</tr>
+<tr class="row-even"><td>LRC</td>
+<td>B3H</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>数据帧结构</strong></dt>
+<dd>:014C00B3&lt;CR&gt;&lt;LF&gt;</dd>
+<dt><strong>返回数据格式</strong></dt>
+<dd>UPDATED: 1308-&gt;1258&lt;CR&gt;&lt;LF&gt;</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h3>（6）查询仪器通讯（00H）<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><p>PC -&gt; 传感器</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>地址码ADR</td>
+<td>01H</td>
+</tr>
+<tr class="row-even"><td>命令码CMD</td>
+<td>00H</td>
+</tr>
+<tr class="row-odd"><td>字节数Bytes</td>
+<td>00H</td>
+</tr>
+<tr class="row-even"><td>LRC</td>
+<td>FFH</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>数据帧结构</strong></dt>
+<dd>:010000FF&lt;CR&gt;&lt;LF&gt;</dd>
+<dt><strong>返回数据格式</strong></dt>
+<dd>:010000FF&lt;CR&gt;&lt;LF&gt;</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="aah">
+<h3>（7）查询或设置仪器地址（AAH）<a class="headerlink" href="#aah" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><p>PC -&gt; 传感器</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>地址码ADR</td>
+<td>00H</td>
+</tr>
+<tr class="row-even"><td>命令码CMD</td>
+<td>AAH</td>
+</tr>
+<tr class="row-odd"><td>字节数Bytes</td>
+<td>00H</td>
+</tr>
+<tr class="row-even"><td>LRC</td>
+<td>56H</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>数据帧结构</strong></dt>
+<dd>:00AA0056&lt;CR&gt;&lt;LF&gt;</dd>
+<dt><strong>返回数据格式</strong></dt>
+<dd>:01AA010153&lt;CR&gt;&lt;LF&gt;</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<div class="last line-block">
+<div class="line">:             起始字符STR</div>
+<div class="line">01            地址码ADR</div>
+<div class="line">AA            命令码CMD</div>
+<div class="line">01            数据字节数DataNum</div>
+<div class="line">01            仪器地址</div>
+<div class="line">56              校验码</div>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h3>(8) 设置仪器地址 （AAH）<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><p>PC -&gt; 传感器</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="70%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>地址码ADR</td>
+<td>01H</td>
+</tr>
+<tr class="row-even"><td>命令码CMD</td>
+<td>AAH</td>
+</tr>
+<tr class="row-odd"><td>字节数Bytes</td>
+<td>01H</td>
+</tr>
+<tr class="row-even"><td>数据项</td>
+<td>02H</td>
+</tr>
+<tr class="row-odd"><td>LRC</td>
+<td>52H</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>数据帧结构</strong></dt>
+<dd>:01AA010252&lt;CR&gt;&lt;LF&gt;</dd>
+<dt><strong>返回数据格式</strong></dt>
+<dd>:02AA010251&lt;CR&gt;&lt;LF&gt;</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<div class="line-block">
+<div class="line">:             起始字符STR</div>
+<div class="line">02            新地址码ADR</div>
+<div class="line">AA            命令码CMD</div>
+<div class="line">01            数据字节数DataNum</div>
+<div class="line">02            仪器新地址</div>
+<div class="line">51              校验码</div>
+</div>
+<div class="last line-block">
+<div class="line">如果当前仪器地址码未知，需要设置仪器地址，地址码ADR可以用广播地址（00H），但是通讯总线上连接的仪器只能有一台。</div>
+<div class="line">新地址必须大于等于01H ，默认为01H 。</div>
+<div class="line">例如：:00AA010253&lt;CR&gt;&lt;LF&gt;</div>
+</div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="lrc">
+<h2>3、附录 LRC校验<a class="headerlink" href="#lrc" title="永久链接至标题">¶</a></h2>
+<div class="section" id="clrc">
+<h3>(1)用一个C语言功能码产生LRC值。<a class="headerlink" href="#clrc" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>该功能码用2个自变量：</p>
+<blockquote>
+<div><div class="highlight-C++"><div class="highlight"><pre><span></span>unsigned char *auchMsg;  //为生成LRC值，把指针指向含有二进制数据的缓冲器
+unsigned short usDataLen; //缓冲器中的字节数。
+
+//该功能返回LRC作为一种类型“unsigned char” 。
+//LRC校验码的产生
+static unsigned char LRCCheck(auchMsg, usDataLen)
+unsigned char *auchMsg; /*按信息的字节计算LRC*/
+unsigned short usDataLen; /*按信息的字节计算LRC*/
+{
+        unsigned char uchLRC = 0 ; /*初始化LRC字符 */
+        while (usDataLen--) /*通过数据缓冲器*/
+        uchLRC += *auchMsg++; /*加缓冲器字节无进位*/
+        return ((unsigned char)(–((char)uchLRC))) ; /*返回二进制补码*/
+}
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id9">
+<h3>(2)4个字节转换为浮点数。<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><div class="highlight-C++"><div class="highlight"><pre><span></span>Union                                                           //公用体
+{
+        float   TestData_Float;                                 //浮点数（4个字节）
+        unsigned long TestData_Long;                            //长整形（4个字节）
+        uint8 TestData_Array[4];                                //4个字节长的数组
+        struct                                                  //
+        {
+                unsigned  int DL;                               //整形（2个字节）
+                unsigned  int DH;                               //整形（2个字节）
+        }TestData_Int;                                          //
+        struct
+        {
+                unsigned char D0;                               //字符型（1个字节）
+                unsigned char D1;                               //
+                unsigned char D2;                               //
+                unsigned char D3;                               //
+        }TestData_char;
+}TData;
+
+例如:
+float Tempfloat;
+TData.TestData_char.D3=0x3f;                                    //输入高字节
+TData.TestData_char.D2=0x3a;                                    //
+TData.TestData_char.D1=0xe1;                                    //
+TData.TestData_char.D0=0x48;                                    //低字节
+Tempfloat=TData.TestData_Float;                                 //得到浮点数0.73
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modbus.html" class="btn btn-neutral float-right" title="路面传感器ModBus RTU通讯协议" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="instruction.html" class="btn btn-neutral" title="遥感式路面传感器用户指南" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

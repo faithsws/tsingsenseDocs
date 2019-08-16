@@ -9,3 +9,4 @@
 
    sddlgr/index 
    visinr/index
+   rdsnsr/index
