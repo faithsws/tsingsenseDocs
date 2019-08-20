@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>多功能串口数据记录仪配置参考 &mdash; 天星智联产品使用手册  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="天星智联产品使用手册  文档" href="../index.html"/>
+        <link rel="up" title="多功能串口记录仪" href="index.html"/>
+        <link rel="prev" title="多功能串口数据记录仪硬件手册" href="hardware.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 天星智联产品使用手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sddlgr/index.html">智能数据采集仪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visinr/index.html">能见度传感器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rdsnsr/index.html">红外遥感式路面传感器</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">多功能串口记录仪</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">多功能串口数据记录仪介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">多功能串口数据记录仪硬件手册</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">多功能串口数据记录仪配置参考</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">可配置项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">帧定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">行定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">编码方式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ascii">ASCII</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raw">RAW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conv">CONV</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">配置模式命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#at-s-serial-at-g-serial">串口参数 AT+S_SERIAL/AT+G_SERIAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#at-s-storage-at-g-storage">存储方案 AT+S_STORAGE/AT+G_STORAGE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#at-s-file-at-g-file">文件分割方案 AT+S_FILE/AT+G_FILE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#at-s-channel-at-s-channel">通信接口选择 AT+S_CHANNEL/AT+S_CHANNEL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#at-s-alarm-at-g-alarm">报警设置 AT+S_ALARM/AT+G_ALARM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#at-s-time-at-g-time">时间设置 AT+S_TIME/AT+G_TIME</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#at-s-send-at-g-send">轮询发送 AT+S_SEND/AT+G_SEND</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">配置脚本详解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">天星智联产品使用手册</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">多功能串口记录仪</a> &raquo;</li>
+      
+    <li>多功能串口数据记录仪配置参考</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/serlgr/config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<span id="id2"></span><h1>多功能串口数据记录仪配置参考<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id3">
+<h2>可配置项<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">通信接口</p>
+<blockquote>
+<div><ul class="simple">
+<li>rs232</li>
+<li>rs485</li>
+<li>ttl</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">报警</p>
+<blockquote>
+<div><ul>
+<li><p class="first">报警方式</p>
+<blockquote>
+<div><ul class="simple">
+<li>led   指示灯</li>
+<li>buzzer 蜂鸣器</li>
+<li>relay  继电器</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">匹配字节串 <code class="docutils literal"><span class="pre">最长16字节</span></code></p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">串口通信参数</p>
+<blockquote>
+<div><ul class="simple">
+<li>波特率 最大 <code class="docutils literal"><span class="pre">921600</span></code></li>
+<li>数据位 <code class="docutils literal"><span class="pre">7/8</span></code></li>
+<li>校验位 <code class="docutils literal"><span class="pre">N/O/E</span></code></li>
+<li>停止位 <code class="docutils literal"><span class="pre">1/2</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">文件分割</p>
+<blockquote>
+<div><ul>
+<li><p class="first">分割方式</p>
+<blockquote>
+<div><ul class="simple">
+<li>size 按大小分割，单位 <code class="docutils literal"><span class="pre">KB</span></code></li>
+<li>time 按时间分割，单位 <code class="docutils literal"><span class="pre">分钟</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">分割参数</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">编码方式</p>
+<blockquote>
+<div><ul>
+<li><p class="first">编码类型</p>
+<blockquote>
+<div><ul class="simple">
+<li>ascii 字符型记录。 在每帧或每行前，可选择加时间戳</li>
+<li>raw  原始16进制记录。</li>
+<li>convert 将原始16进制变换成2字符ascii字符进行记录</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">是否加时间戳 仅用于 ascii和convert</p>
+</li>
+<li><p class="first">是否以&#8217;\r&#8217;作为新行标志 仅用于 ascii</p>
+</li>
+<li><p class="first">是否以&#8217;\n&#8217;作为新行标志 仅用于 ascii</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">轮询发送</p>
+<blockquote>
+<div><ul class="simple">
+<li>发送周期 单位 <code class="docutils literal"><span class="pre">秒</span></code></li>
+<li>发送字节串 <code class="docutils literal"><span class="pre">最长32个字节</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>极限测试数据：</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>条件：无轮询，无报警</dt>
+<dd><div class="first last line-block">
+<div class="line">ascii模式下，921600波特率，每帧32字符，10ms周期定时发送，无数据丢失</div>
+<div class="line">convert模式下，921600波特率，每帧32字符，20ms周期定时发送，无数据丢失</div>
+<div class="line">raw模式下，25600波特率连续发送，无数据丢失</div>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>帧定义<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>对于连续发送的字节流，如果中断超过 <code class="docutils literal"><span class="pre">3.5个字符</span></code> 传输时间，则认为是新的一帧的开始</p>
+<p>每接收到一帧数据，模式指示灯闪烁一次</p>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h2>行定义<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li>对于不超过2000个字符的帧，认为是一行</li>
+<li>如果一帧内的字符超过2000个，则从2001个字符开始分为2行</li>
+<li>如果设置了新行标志，则不按照帧划分，仅在遇到新行标志字符时才划分为新行，除非达到2000字符上限</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h2>编码方式<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>500ms 周期发送字节串 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x30</div></blockquote>
+<div class="section" id="ascii">
+<h3>ASCII<a class="headerlink" href="#ascii" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>主要用于记录一般 <code class="docutils literal"><span class="pre">字符日志</span></code></p>
+<p><strong>配置</strong> ：带时间戳，CR=false， LF=false</p>
+<p>记录文件 2000_01_02 18_29_34.txt 如下</p>
+</div></blockquote>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">34.957</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">35.453</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">35.954</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">36.454</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">36.954</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">37.453</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">37.956</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">38.453</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">38.956</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">39.454</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">39.953</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">40.453</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">40.953</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">41.456</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">41.953</span><span class="p">]</span> <span class="mi">1234567890</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mf">42.453</span><span class="p">]</span> <span class="mi">1234567890</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="raw">
+<h3>RAW<a class="headerlink" href="#raw" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>主要用于 <code class="docutils literal"><span class="pre">记录原始数据</span></code></p>
+<p>记录文件 2000_01_02 18_33_10.bin 如下</p>
+</div></blockquote>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="mi">12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conv">
+<h3>CONV<a class="headerlink" href="#conv" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>主要用于 <code class="docutils literal"><span class="pre">调试原始数据</span></code></p>
+<p><strong>配置</strong> ：带时间戳</p>
+<p>记录文件 2000_01_02 18_37_35.txt 如下</p>
+</div></blockquote>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">35.277</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">35.778</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">36.276</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">36.775</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">37.275</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">37.778</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">38.276</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">38.776</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">39.278</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">39.775</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">40.276</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">40.775</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">41.278</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">41.777</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">42.278</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">42.776</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">43.280</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">43.778</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+<span class="p">[</span><span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">44.277</span><span class="p">]</span> <span class="mi">31</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">34</span> <span class="mi">35</span> <span class="mi">36</span> <span class="mi">37</span> <span class="mi">38</span> <span class="mi">39</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>配置模式命令<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>在配置模式下，可以通过USB模拟出的COM进行配置，配置结果保存于EEPROM。当SD卡中无配置文件config.ini时，使用EEPROM中的配置对 多功能串口记录仪 进行初始化。</p>
+<p>使用任意串口调试工具连接并打开串口（38400 8N1），即可使用AT命令配置 多功能串口记录仪 。</p>
+</div></blockquote>
+<div class="section" id="at-s-serial-at-g-serial">
+<h3>串口参数 AT+S_SERIAL/AT+G_SERIAL<a class="headerlink" href="#at-s-serial-at-g-serial" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">设置</p>
+<blockquote>
+<div><p><strong>AT+S_SERIAL=波特率_数据位_校验位_停止位&lt;CR&gt;&lt;LF&gt;</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">波特率范围：1200,4800,9600,19200,38400,56000,57600,115200,128000,230400,256000,921600</div>
+<div class="line">数据为范围：7,8</div>
+<div class="line">校验位范围：N,E,O</div>
+<div class="line">停止位范围：1,2</div>
+</div>
+</div></blockquote>
+<dl class="docutils">
+<dt>举例：</dt>
+<dd><p class="first last">AT+S_SERIAL=115200_8_N_1</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p class="first">读取</p>
+<blockquote>
+<div><p><strong>AT+G_SERIAL=?&lt;CR&gt;&lt;LF&gt;</strong></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="at-s-storage-at-g-storage">
+<h3>存储方案 AT+S_STORAGE/AT+G_STORAGE<a class="headerlink" href="#at-s-storage-at-g-storage" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">设置</p>
+<blockquote>
+<div><p><strong>AT+S_STORAGE=存储模式:标志1[,标志2][,标志3]&lt;CR&gt;&lt;LF&gt;</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">存储模式：ASCII,RAW,CONV</div>
+<div class="line">标志：TS,CR,LF</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li>TS 每行加时间戳</li>
+<li>CR 以CR为新行标志</li>
+<li>LF 以LF为新行标志</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">读取</p>
+<blockquote>
+<div><p><strong>AT+G_STORAGE=?&lt;CR&gt;&lt;LF&gt;</strong></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="at-s-file-at-g-file">
+<h3>文件分割方案 AT+S_FILE/AT+G_FILE<a class="headerlink" href="#at-s-file-at-g-file" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">设置</p>
+<blockquote>
+<div><p><strong>AT+S_FILE=分割方式:分割参数&lt;CR&gt;&lt;LF&gt;</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">分割方式：SIZE,TIME</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li>SIZE 按文件大小分割 单位 KB</li>
+<li>TIME 按时间长短分割 单位 分钟</li>
+</ul>
+</div></blockquote>
+<div class="line-block">
+<div class="line">分割参数：1 ~ 2^31</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">读取</p>
+<blockquote>
+<div><p><strong>AT+G_STORAGE=?&lt;CR&gt;&lt;LF&gt;</strong></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="at-s-channel-at-s-channel">
+<h3>通信接口选择 AT+S_CHANNEL/AT+S_CHANNEL<a class="headerlink" href="#at-s-channel-at-s-channel" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">设置</p>
+<blockquote>
+<div><p><strong>AT+S_CHANNEL=通道&lt;CR&gt;&lt;LF&gt;</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">通道：RS232,RS485,TTL</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">读取</p>
+<blockquote>
+<div><p><strong>AT+S_CHANNEL=?&lt;CR&gt;&lt;LF&gt;</strong></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="at-s-alarm-at-g-alarm">
+<h3>报警设置 AT+S_ALARM/AT+G_ALARM<a class="headerlink" href="#at-s-alarm-at-g-alarm" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">设置</p>
+<blockquote>
+<div><p><strong>AT+S_ALARM=报警方式1[,报警方式2][,报警方式3]&#64;字节串</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">报警方式：BUZZER,LED,RELAY</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li>BUZZER 蜂鸣器</li>
+<li>LED  指示灯</li>
+<li>RELAY 继电器</li>
+</ul>
+</div></blockquote>
+<div class="line-block">
+<div class="line">字节串： 0x&#8211;[,0x&#8211;]  以0x开头的，以英文逗号为分割的连续十六进制字节。 <code class="docutils literal"><span class="pre">最长16个字节</span></code></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>字节串个数越多，越影响处理性能</p>
+<p class="last">如果需要关闭报警功能，可以使用 AT+S_ALARM=&#64;</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">读取</p>
+<blockquote>
+<div><p><strong>AT+G_ALARM=?&lt;CR&gt;&lt;LF&gt;</strong></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="at-s-time-at-g-time">
+<h3>时间设置 AT+S_TIME/AT+G_TIME<a class="headerlink" href="#at-s-time-at-g-time" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">设置</p>
+<blockquote>
+<div><p><strong>AT+S_TIME=时间字符串&lt;CR&gt;&lt;LF&gt;</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">时间字符串：YYMMDDHHmmss ，按照年月日时分秒的顺序，每项2个字符</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">读取</p>
+<blockquote>
+<div><p><strong>AT+G_TIME=?&lt;CR&gt;&lt;LF&gt;</strong></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="at-s-send-at-g-send">
+<h3>轮询发送 AT+S_SEND/AT+G_SEND<a class="headerlink" href="#at-s-send-at-g-send" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">设置</p>
+<blockquote>
+<div><p><strong>AT+S_SEND=轮询间隔&#64;字节串&lt;CR&gt;&lt;LF&gt;</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">轮询间隔：0 ~ 2^31 ,单位秒。 如果要关闭轮询功能，间隔可以设置为 0</div>
+<div class="line">字节串： 0x&#8211;[,0x&#8211;]  以0x开头的，以英文逗号为分割的连续十六进制字节。 <code class="docutils literal"><span class="pre">最长32个字节</span></code></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">读取</p>
+<blockquote>
+<div><p><strong>AT+G_SEND=?&lt;CR&gt;&lt;LF&gt;</strong></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>配置脚本详解<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>如果SD卡中存在配置脚本文件 config.ini，那么将以脚本的配置进行初始化。</p>
+<p>配置文件是按照windows的系统配置文件的存储文件格式进行组织编写的。具体说明请参考 <a class="reference external" href="https://baike.baidu.com/item/ini%E6%96%87%E4%BB%B6/9718973?fr=aladdin">ini文件</a> 。请务必按照正确的格式，否则将导致解析错误。</p>
+<p>配置实例：</p>
+<blockquote>
+<div><div class="code ini highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">channel</span><span class="p">]</span>
+<span class="n">channel</span><span class="o">=</span><span class="n">rs232</span>           <span class="p">;</span><span class="n">rs232</span><span class="p">,</span><span class="n">rs485</span><span class="p">,</span><span class="n">ttl</span>
+<span class="p">[</span><span class="n">alarm</span><span class="p">]</span>
+<span class="n">by</span><span class="o">=</span><span class="n">led</span><span class="p">,</span><span class="n">buzzer</span><span class="p">,</span><span class="n">relay</span>
+<span class="n">match_hex</span><span class="o">=</span><span class="mh">0x30</span><span class="p">,</span><span class="mh">0x31</span><span class="p">,</span><span class="mh">0x32</span><span class="p">,</span><span class="mh">0x33</span><span class="p">,</span><span class="mh">0x34</span>
+<span class="p">[</span><span class="n">serial</span><span class="p">]</span>
+<span class="n">baudrate</span><span class="o">=</span><span class="mi">9600</span>
+<span class="n">data_bits</span><span class="o">=</span><span class="mi">8</span> <span class="p">;</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span>
+<span class="n">parity</span><span class="o">=</span><span class="n">N</span>   <span class="p">;</span> <span class="n">N</span><span class="p">,</span><span class="n">O</span><span class="p">,</span><span class="n">E</span>
+<span class="n">stop_bits</span><span class="o">=</span><span class="mi">1</span> <span class="p">;</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
+<span class="p">[</span><span class="n">file</span><span class="p">]</span>
+<span class="n">splitter</span><span class="o">=</span><span class="n">size</span>   <span class="p">;</span><span class="n">size</span><span class="p">,</span><span class="n">time</span>
+<span class="n">parameter</span><span class="o">=</span><span class="mi">8000</span> <span class="p">;</span><span class="n">kB</span><span class="p">,</span><span class="n">minutes</span>
+<span class="p">[</span><span class="n">storage</span><span class="p">]</span>
+<span class="nb">type</span><span class="o">=</span><span class="n">ascii</span>      <span class="p">;</span><span class="n">raw</span> <span class="p">,</span><span class="n">ascii</span> <span class="p">,</span><span class="n">convert</span>
+<span class="n">add_timestamp</span><span class="o">=</span><span class="n">true</span>
+<span class="n">newline_cr</span><span class="o">=</span><span class="n">false</span>
+<span class="n">newline_lf</span><span class="o">=</span><span class="n">false</span>
+<span class="p">[</span><span class="n">send</span><span class="p">]</span>
+<span class="n">interval</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">send_hex</span><span class="o">=</span><span class="mh">0x31</span><span class="p">,</span><span class="mh">0x32</span><span class="p">,</span><span class="mh">0x33</span><span class="p">,</span><span class="mh">0x34</span>
+</pre></div>
+</div>
+<p>以上配置解读为：</p>
+<blockquote>
+<div><ul class="simple">
+<li>进行RS232通信接口记录</li>
+<li>当一帧内遇到字节串“0x30,0x31,0x32,0x33,0x34”时，通过 LED，蜂鸣器，继电器进行报警</li>
+<li>串口通信参数为： 9600 8N1</li>
+<li>文件按照大小的方式进行分割，每8000KB新建一个文件</li>
+<li>记录方式为 ASCII，每行行首增加时间戳，以默认的帧分割行</li>
+<li>每10秒，发送字节串“=0x31,0x32,0x33,0x34”</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="hardware.html" class="btn btn-neutral" title="多功能串口数据记录仪硬件手册" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

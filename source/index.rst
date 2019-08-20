@@ -10,3 +10,4 @@
    sddlgr/index 
    visinr/index
    rdsnsr/index
+   serlgr/index
