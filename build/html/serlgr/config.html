@@ -558,6 +558,7 @@
 <blockquote>
 <div><p>如果SD卡中存在配置脚本文件 config.ini，那么将以脚本的配置进行初始化。</p>
 <p>配置文件是按照windows的系统配置文件的存储文件格式进行组织编写的。具体说明请参考 <a class="reference external" href="https://baike.baidu.com/item/ini%E6%96%87%E4%BB%B6/9718973?fr=aladdin">ini文件</a> 。请务必按照正确的格式，否则将导致解析错误。</p>
+<p>配置文件最大1024字节。</p>
 <p>配置实例：</p>
 <blockquote>
 <div><div class="code ini highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">channel</span><span class="p">]</span>
@@ -579,8 +580,10 @@
 <span class="n">newline_cr</span><span class="o">=</span><span class="n">false</span>
 <span class="n">newline_lf</span><span class="o">=</span><span class="n">false</span>
 <span class="p">[</span><span class="n">send</span><span class="p">]</span>
-<span class="n">interval</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">send_hex</span><span class="o">=</span><span class="mh">0x31</span><span class="p">,</span><span class="mh">0x32</span><span class="p">,</span><span class="mh">0x33</span><span class="p">,</span><span class="mh">0x34</span>
+<span class="n">send_hex1</span><span class="o">=</span><span class="mi">1</span><span class="nd">@0x30</span><span class="p">,</span><span class="mh">0x32</span><span class="p">,</span><span class="mh">0x33</span><span class="p">,</span><span class="mh">0x34</span><span class="p">,</span><span class="mh">0x0d</span><span class="p">,</span><span class="mh">0x0a</span>
+<span class="n">send_hex2</span><span class="o">=</span><span class="mi">2</span><span class="nd">@0x31</span><span class="p">,</span><span class="mh">0x32</span><span class="p">,</span><span class="mh">0x33</span><span class="p">,</span><span class="mh">0x34</span><span class="p">,</span><span class="mh">0x0d</span><span class="p">,</span><span class="mh">0x0a</span>
+<span class="n">send_hex3</span><span class="o">=</span><span class="mi">3</span><span class="nd">@0x32</span><span class="p">,</span><span class="mh">0x32</span><span class="p">,</span><span class="mh">0x33</span><span class="p">,</span><span class="mh">0x34</span><span class="p">,</span><span class="mh">0x0d</span><span class="p">,</span><span class="mh">0x0a</span>
+<span class="n">send_hex4</span><span class="o">=</span><span class="mi">4</span><span class="nd">@0x33</span><span class="p">,</span><span class="mh">0x32</span><span class="p">,</span><span class="mh">0x33</span><span class="p">,</span><span class="mh">0x34</span><span class="p">,</span><span class="mh">0x0d</span><span class="p">,</span><span class="mh">0x0a</span>
 </pre></div>
 </div>
 <p>以上配置解读为：</p>
@@ -591,11 +594,16 @@
 <li>串口通信参数为： 9600 8N1</li>
 <li>文件按照大小的方式进行分割，每8000KB新建一个文件</li>
 <li>记录方式为 ASCII，每行行首增加时间戳，以默认的帧分割行</li>
-<li>每10秒，发送字节串“=0x31,0x32,0x33,0x34”</li>
+<li>多功能串口记录仪 按照 <cite>send_hex1</cite> , <cite>send_hex2</cite> ... 的顺序依次发送十六进制字节。每次发送前延时 &#64; 符号前的 正整型数值代表的 <cite>秒</cite> 。</li>
 </ul>
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>脚本配置时， [send] 最多支持32条循环发送，每条最长32个字节</p>
+<p class="last">串口命令配置时，仅支持一条，最长32个字节</p>
+</div>
 </div>
 </div>
 
