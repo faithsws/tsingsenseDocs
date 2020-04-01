@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>UART通信 &mdash; 天星智联产品使用手册  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="天星智联产品使用手册  文档" href="../index.html"/>
+        <link rel="up" title="数字型触发延时模块" href="index.html"/>
+        <link rel="prev" title="双边沿触发型" href="dualedge.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 天星智联产品使用手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sddlgr/index.html">智能数据采集仪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visinr/index.html">能见度传感器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rdsnsr/index.html">红外遥感式路面传感器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serlgr/index.html">多功能串口记录仪</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">数字型触发延时模块</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="instruction.html">介绍与选型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edge.html">边沿触发型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dualedge.html">双边沿触发型</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UART通信</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">电气特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">通信协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">通信示例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#addr">读取ADDR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">设置ADDR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">读取输出状态</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">设置输出状态</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">读取输入状态</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">设置单稳态触发</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">天星智联产品使用手册</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">数字型触发延时模块</a> &raquo;</li>
+      
+    <li>UART通信</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/delaytrigger/uart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="uart">
+<h1>UART通信<a class="headerlink" href="#uart" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>电气特性<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>UART固定设置为 9600 8N1，无法修改。需要定制波特率或其他通信参数，请联系客服</p>
+<p>UART标准电压为3.3V，最大耐受电压5V。勿超过最大电压而引起模块损坏。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>通信协议<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>UART通信兼容MODBUS RTU协议，通信功能包括：</p>
+<ol class="arabic simple">
+<li>读取ADDR  保持寄存器0</li>
+<li>设置ADDR  保持寄存器0</li>
+<li>读取输出状态   线圈0</li>
+<li>设置输出状态   线圈0</li>
+<li>读取输入状态   离散输入0</li>
+<li>设置单稳态触发  保持寄存器1，2</li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>广播地址为 255， 当忘记模块地址时，可以用于找回地址，或者广播控制</li>
+<li>接收时模块内部不进行CRC校验，但为了兼容RTU协议，必须带2个CRC字节，设置为0 即可</li>
+<li>模块应答时，带CRC校验字节。 可以使用 Modbus Poll软件来测试</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>通信示例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>xx 表示任意字节</p>
+<p>CC 表示CRC校验码</p>
+</div></blockquote>
+<div class="section" id="addr">
+<h3>读取ADDR<a class="headerlink" href="#addr" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>读取保持寄存器0，本机地址为 1</div></blockquote>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="mi">000029</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="n">FF</span> <span class="mi">03</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">91</span> <span class="n">D4</span>
+<span class="mi">000030</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="n">FF</span> <span class="mi">03</span> <span class="mi">02</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">50</span> <span class="mi">50</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>设置ADDR<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>设置保持寄存器0，地址为 1</div></blockquote>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="mi">000000</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="n">FF</span> <span class="mi">06</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">5</span><span class="n">D</span> <span class="n">D4</span>
+<span class="mi">000001</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="n">FF</span> <span class="mi">06</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">5</span><span class="n">D</span> <span class="n">D4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>读取输出状态<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>读取线圈0，当前输出值为0</div></blockquote>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="mi">000006</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="n">FD</span> <span class="n">CA</span>
+<span class="mi">000007</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">01</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">51</span> <span class="mi">88</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>设置输出状态<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>设置线圈0，设置为on，打开继电器</div></blockquote>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="mi">000010</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">05</span> <span class="mi">00</span> <span class="mi">00</span> <span class="n">FF</span> <span class="mi">00</span> <span class="mi">8</span><span class="n">C</span> <span class="mi">3</span><span class="n">A</span>
+<span class="mi">000011</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">05</span> <span class="mi">00</span> <span class="mi">00</span> <span class="n">FF</span> <span class="mi">00</span> <span class="mi">8</span><span class="n">C</span> <span class="mi">3</span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>读取输入状态<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>读取离散输入0，目前输入为on，高电平</div></blockquote>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="mi">000008</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">02</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="n">B9</span> <span class="n">CA</span>
+<span class="mi">000009</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">02</span> <span class="mi">01</span> <span class="mi">01</span> <span class="mi">60</span> <span class="mi">48</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>设置单稳态触发<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>设置单稳态触发，保持寄存器1，2。延时时间 1000毫秒</div></blockquote>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="c1">#输出off 1000ms，输出on</span>
+<span class="mi">000000</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">04</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">03</span> <span class="n">E8</span> <span class="mi">32</span> <span class="n">DD</span>
+<span class="mi">000001</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">10</span> <span class="mi">08</span>
+
+<span class="c1">#反转输出 1000ms，再反转输出</span>
+<span class="mi">000002</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">04</span> <span class="mi">80</span> <span class="mi">00</span> <span class="mi">03</span> <span class="n">E8</span> <span class="mi">1</span><span class="n">B</span> <span class="mi">1</span><span class="n">D</span>
+<span class="mi">000003</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">10</span> <span class="mi">08</span>
+
+<span class="c1">#输出on 1000ms，输出off</span>
+<span class="mi">000004</span><span class="o">-</span><span class="n">Tx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">04</span> <span class="mi">40</span> <span class="mi">00</span> <span class="mi">03</span> <span class="n">E8</span> <span class="mi">27</span> <span class="mi">1</span><span class="n">D</span>
+<span class="mi">000005</span><span class="o">-</span><span class="n">Rx</span><span class="p">:</span><span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">10</span> <span class="mi">08</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>.</dt>
+<dd><table border="1" class="first docutils">
+<colgroup>
+<col width="22%" />
+<col width="28%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">寄存器1</th>
+<th class="head">寄存器1</th>
+<th class="head">寄存器2</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bit15,14</td>
+<td>bit13...0</td>
+<td>bit15... bit0</td>
+</tr>
+<tr class="row-odd"><td>暂态值</td>
+<td>延时时间</td>
+<td>延时时间</td>
+</tr>
+</tbody>
+</table>
+<p>寄存器1的最高2位表示操作码， 1表示暂态为on，0表示暂态为off。2表示反转。延时时间到达后，反转输出。</p>
+<p class="last">延时时间计算方法为： <strong>（寄存器1[13:0] &lt;&lt; 16）+ 寄存器2， 单位为毫秒</strong></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="dualedge.html" class="btn btn-neutral" title="双边沿触发型" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

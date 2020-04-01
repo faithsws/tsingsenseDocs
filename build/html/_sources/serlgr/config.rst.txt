@@ -217,10 +217,10 @@ CONV
 
  - 读取
 
-        **AT+G_STORAGE=?<CR><LF>**
+        **AT+G_FILE=?<CR><LF>**
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-通信接口选择 AT+S_CHANNEL/AT+S_CHANNEL
+通信接口选择 AT+S_CHANNEL/AT+G_CHANNEL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  - 设置
         
@@ -230,7 +230,7 @@ CONV
                         
  - 读取
 
-        **AT+S_CHANNEL=?<CR><LF>**
+        **AT+G_CHANNEL=?<CR><LF>**
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 报警设置 AT+S_ALARM/AT+G_ALARM
