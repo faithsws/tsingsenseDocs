@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ASCII协议说明 &mdash; 天星智联产品使用手册  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="天星智联产品使用手册  文档" href="../index.html"/>
+        <link rel="up" title="雷达雨量传感器" href="index.html"/>
+        <link rel="next" title="ModBus协议说明" href="protocol_modbus.html"/>
+        <link rel="prev" title="硬件安装及使用说明" href="hardware_usage.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 天星智联产品使用手册
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">内容:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sddlgr/index.html">智能数据采集仪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visinr/index.html">能见度传感器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rdsnsr/index.html">红外遥感式路面传感器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serlgr/index.html">多功能串口记录仪</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">雷达雨量传感器</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">RS-21雷达雨量传感器简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware_usage.html">硬件安装及使用说明</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ASCII协议说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">命令及应答</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">数据内容格式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">降水主特征</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="protocol_modbus.html">ModBus协议说明</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">天星智联产品使用手册</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">雷达雨量传感器</a> &raquo;</li>
+      
+    <li>ASCII协议说明</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/radar_rain_sensor/protocol_ascii.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ascii">
+<h1>ASCII协议说明<a class="headerlink" href="#ascii" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>命令及应答<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">打开指定ID的设备，使其进入设置模式</p>
+<ol class="loweralpha">
+<li><p class="first">命令格式</p>
+<p><code class="docutils literal"><span class="pre">OPEN</span> <span class="pre">xx</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&lt;CR&gt;&lt;LF&gt;</span></code>      xx代表设备ID， 范围： 00 ~ 99</p>
+<p>备注：某些命令必须在设置模式下有效</p>
+</li>
+<li><p class="first">应答</p>
+<p><code class="docutils literal"><span class="pre">Command</span> <span class="pre">Mode</span> <span class="pre">Open&lt;CR&gt;&lt;LF&gt;</span></code></p>
+</li>
+</ol>
+</li>
+<li><p class="first">关闭指定ID设备的设置模式</p>
+<ol class="loweralpha">
+<li><p class="first">命令格式</p>
+<p><code class="docutils literal"><span class="pre">CLSE</span> <span class="pre">xx</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&lt;CR&gt;&lt;LF&gt;</span></code>  xx代表设备ID， 范围： 00 ~ 99</p>
+</li>
+<li><p class="first">应答</p>
+<p><code class="docutils literal"><span class="pre">Command</span> <span class="pre">Mode</span> <span class="pre">Close&lt;CR&gt;&lt;LF&gt;</span></code></p>
+</li>
+</ol>
+</li>
+<li><p class="first">获取指定ID设备的当前数据</p>
+<ol class="loweralpha">
+<li><p class="first">命令格式</p>
+<p><code class="docutils literal"><span class="pre">DRAW</span> <span class="pre">xx</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&lt;CR&gt;&lt;LF&gt;</span></code>  xx代表设备ID， 范围： 00 ~ 99</p>
+</li>
+<li><p class="first">应答</p>
+<p><code class="docutils literal"><span class="pre">数据内容&lt;CR&gt;&lt;LF&gt;</span></code>   参考后续章节《ASCII协议数据内容格式》</p>
+</li>
+</ol>
+</li>
+<li><p class="first">设置传感器串行参数   <strong>需要设置模式</strong></p>
+<ol class="loweralpha">
+<li><p class="first">命令格式</p>
+<p><code class="docutils literal"><span class="pre">UART</span> <span class="pre">bbbb</span> <span class="pre">p</span> <span class="pre">w</span> <span class="pre">s</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&lt;CR&gt;&lt;LF&gt;</span></code></p>
+<ol class="arabic simple">
+<li>bbbb代表通信波特率， 范围： 1200，2400，4800，9600，19200，38400，115200</li>
+<li>p 代表校验位 范围： N &#8212; 无校验  O &#8212; 奇校验  E &#8212; 偶校验</li>
+<li>w 代表数据长度 范围：7，8</li>
+<li>s 代表停止位  范围：1，2</li>
+</ol>
+</li>
+<li><p class="first">应答</p>
+<p><code class="docutils literal"><span class="pre">UART</span> <span class="pre">OK&lt;CR&gt;&lt;LF&gt;</span></code></p>
+</li>
+</ol>
+</li>
+<li><p class="first">设置传感器ID  <strong>需要设置模式</strong></p>
+<ol class="loweralpha">
+<li><p class="first">命令格式</p>
+<p><code class="docutils literal"><span class="pre">ID</span> <span class="pre">xx</span> <span class="pre">&lt;CR&gt;&lt;LF&gt;</span></code></p>
+<p>xx代表 新的设备地址  范围： 0 ~ 99</p>
+</li>
+<li><p class="first">应答</p>
+<p><code class="docutils literal"><span class="pre">ID</span> <span class="pre">OK&lt;CR&gt;&lt;LF&gt;</span></code></p>
+</li>
+</ol>
+</li>
+<li><p class="first">设置传感器工作模式       <strong>需要设置模式</strong></p>
+<ol class="loweralpha">
+<li><p class="first">命令格式</p>
+<p><code class="docutils literal"><span class="pre">MODE</span> <span class="pre">mm</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&lt;CR&gt;&lt;LF&gt;</span></code></p>
+<ol class="arabic simple">
+<li>mm代表设备工作模式  范围： 0 ~ 2</li>
+<li>工作模式0：继电器吸合时，上报数据</li>
+<li>工作模式1：自动上报 上报间隔依赖于 《INTVL》设置值</li>
+<li>工作模式2：不自动上报，需要使用 《DRAW》命令读取</li>
+</ol>
+</li>
+<li><p class="first">应答</p>
+<p><code class="docutils literal"><span class="pre">MODE</span> <span class="pre">OK&lt;CR&gt;&lt;LF&gt;</span></code></p>
+</li>
+</ol>
+</li>
+<li><p class="first">清空传感器缓存数据       <strong>需要设置模式</strong></p>
+<ol class="loweralpha">
+<li><p class="first">命令格式</p>
+<p><code class="docutils literal"><span class="pre">CLEAR</span> <span class="pre">&lt;CR&gt;&lt;LF&gt;</span></code></p>
+<p>清空所有上电以来，或上次清空以来，用于计算的所有缓存数据</p>
+</li>
+<li><p class="first">应答</p>
+<p><code class="docutils literal"><span class="pre">CLEAR</span> <span class="pre">OK&lt;CR&gt;&lt;LF&gt;</span></code></p>
+</li>
+</ol>
+</li>
+<li><p class="first">设置自动上报时间间隔      <strong>需要设置模式</strong></p>
+<ol class="loweralpha">
+<li><p class="first">命令格式</p>
+<p><code class="docutils literal"><span class="pre">INTVL</span> <span class="pre">mm</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">&lt;CR&gt;&lt;LF&gt;</span></code></p>
+<p>设置工作模式1状态下的自动上报时间间隔。单位分钟。 范围：1~65536</p>
+</li>
+<li><p class="first">应答</p>
+<p><code class="docutils literal"><span class="pre">INTVL</span> <span class="pre">OK&lt;CR&gt;&lt;LF&gt;</span></code></p>
+</li>
+</ol>
+</li>
+<li><p class="first">读取所有设置信息        <strong>需要设置模式</strong></p>
+<ol class="loweralpha">
+<li><p class="first">命令格式</p>
+<p><code class="docutils literal"><span class="pre">PAR</span>&#160;&#160; <span class="pre">&lt;CR&gt;&lt;LF&gt;</span></code></p>
+<p>显示ID，MODE，UART等信息</p>
+</li>
+<li><p class="first">应答</p>
+<p><code class="docutils literal"><span class="pre">PAR</span> <span class="pre">OK&lt;CR&gt;&lt;LF&gt;</span></code></p>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>数据内容格式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="23%" />
+<col width="21%" />
+<col width="19%" />
+<col width="21%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#8212;</th>
+<th class="head">24小时降雨量单位mm</th>
+<th class="head">12小时降雨量单位mm</th>
+<th class="head">小时降雨量单位mm</th>
+<th class="head">10分钟内降水主特征</th>
+<th class="head">计数值</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>printf</td>
+<td>03.1f</td>
+<td>03.1f</td>
+<td>03.1f</td>
+<td>d</td>
+<td>04d</td>
+</tr>
+<tr class="row-odd"><td>示例</td>
+<td>101.2</td>
+<td>028.0</td>
+<td>003.4</td>
+<td>2</td>
+<td>101</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id3">
+<h3>降水主特征<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">特征</th>
+<th class="head">代码</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>晴</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>小雨</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>大雨</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>雪</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>冰雹</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果忘记串行通信参数，可以在拨码为ASCII协议状态下，使用9600 8N1，上电2s内，输入回车。此时传感器将进入fix模式，可以在此模式下修改参数。</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="protocol_modbus.html" class="btn btn-neutral float-right" title="ModBus协议说明" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="hardware_usage.html" class="btn btn-neutral" title="硬件安装及使用说明" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, songwensheng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
