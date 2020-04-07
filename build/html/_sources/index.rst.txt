@@ -12,3 +12,4 @@
    rdsnsr/index
    serlgr/index
    radar_rain_sensor/index
+   optics_rain_sensor/index
