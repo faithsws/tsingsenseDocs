@@ -241,8 +241,17 @@
 <td>2</td>
 <td>读写</td>
 </tr>
+<tr class="row-even"><td>10</td>
+<td>天气现象</td>
+<td>2</td>
+<td>只读</td>
+</tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">天气现象功能仅在特定型号传感器上有效</p>
+</div>
 <ul>
 <li><p class="first">能见度与报警阈值格式</p>
 <blockquote>
@@ -334,6 +343,29 @@
 <div class="line">写入范围 0~3。 写入后自动重启至新的工作模式。</div>
 </div>
 </div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>天气现象</dt>
+<dd><p class="first">仅特定型号有效。15~30s内的瞬时天气状态，准确率90%。</p>
+<p>数值含义:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="mh">0x0</span>  <span class="o">//</span><span class="n">晴</span>
+<span class="mh">0x10</span> <span class="o">//</span><span class="n">大雨</span>
+<span class="mh">0x11</span> <span class="o">//</span><span class="n">中雨</span><span class="o">---</span>
+<span class="mh">0x12</span> <span class="o">//</span><span class="n">小雨</span><span class="o">---</span>
+<span class="mh">0x20</span> <span class="o">//</span><span class="n">大毛毛雨</span>
+<span class="mh">0x21</span> <span class="o">//</span><span class="n">中毛毛雨</span><span class="o">----</span>
+<span class="mh">0x22</span> <span class="o">//</span><span class="n">小毛毛雨</span><span class="o">----</span>
+<span class="mh">0x32</span> <span class="o">//</span><span class="n">大雪</span>
+<span class="mh">0x33</span> <span class="o">//</span><span class="n">中雪</span>
+<span class="mh">0x34</span> <span class="o">//</span><span class="n">小雪</span>
+<span class="mh">0x40</span> <span class="o">//</span><span class="n">烟</span>
+<span class="mh">0x50</span> <span class="o">//</span><span class="n">雾</span>
+<span class="mh">0x60</span> <span class="o">//</span><span class="n">冰雹或高空坠物</span>
+<span class="mh">0x99</span> <span class="o">//</span><span class="n">飞虫或异常遮挡</span>
+</pre></div>
+</div>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>

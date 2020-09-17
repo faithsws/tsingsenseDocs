@@ -173,7 +173,7 @@
          1 WARNING (警告)          1 DRY(干)           
          2 ALARM (报警)            2 MOIST(潮)     
          3 FROST WARNING (霜警告)  3 WET(湿)  
-         4 预留                    4 预留 
+         4 OBSTRUCT(阻挡警告)      4 预留 
          \                         5 预留      
          \                         6 SNOW(雪)     
          \                         7 ICE(冰)      

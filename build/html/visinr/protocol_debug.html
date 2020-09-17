@@ -93,9 +93,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#id9">数据格式与工作模式</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">设备常见问题解决办法</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id15">信息丢失</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">信息存在，但能见度值总为0或满量程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">天气现象说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">设备常见问题解决办法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id16">信息丢失</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">信息存在，但能见度值总为0或满量程</a></li>
 </ul>
 </li>
 </ul>
@@ -341,9 +342,37 @@ par1 ... parn    为命令中可能的参数，以空格隔开。</div></blockqu
 </div>
 </div>
 <div class="section" id="id14">
-<h2>设备常见问题解决办法<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<h2>天气现象说明<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>具备天气功能的能见度传感器，将在正常数据的最后增加一个字节的数据，表示天气现象。</p>
+<p>天气现象反映的是最近15~30s内的天气现象，准确率90%。</p>
+<p>最后字节“11” 表示天气现象:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VM</span> <span class="mi">00</span> <span class="mi">15000</span> <span class="mi">15000</span> <span class="mi">03</span> <span class="mi">11</span>
+</pre></div>
+</div>
+<p>以下为对应关系:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">00</span> <span class="o">//</span><span class="n">晴</span>
+<span class="mi">10</span> <span class="o">//</span><span class="n">大雨</span>
+<span class="mi">11</span> <span class="o">//</span><span class="n">中雨</span><span class="o">---</span>
+<span class="mi">12</span> <span class="o">//</span><span class="n">小雨</span><span class="o">---</span>
+<span class="mi">20</span> <span class="o">//</span><span class="n">大毛毛雨</span>
+<span class="mi">21</span> <span class="o">//</span><span class="n">中毛毛雨</span><span class="o">----</span>
+<span class="mi">22</span> <span class="o">//</span><span class="n">小毛毛雨</span><span class="o">----</span>
+<span class="mi">32</span> <span class="o">//</span><span class="n">大雪</span>
+<span class="mi">33</span> <span class="o">//</span><span class="n">中雪</span>
+<span class="mi">34</span> <span class="o">//</span><span class="n">小雪</span>
+<span class="mi">40</span> <span class="o">//</span><span class="n">烟</span>
+<span class="mi">50</span> <span class="o">//</span><span class="n">雾</span>
+<span class="mi">60</span> <span class="o">//</span><span class="n">冰雹或高空坠物</span>
+<span class="mi">99</span> <span class="o">//</span><span class="n">飞虫或异常遮挡</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 <div class="section" id="id15">
-<h3>信息丢失<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<h2>设备常见问题解决办法<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id16">
+<h3>信息丢失<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p class="first">你的主台显示软件通讯设置正确吗？</p>
@@ -374,8 +403,8 @@ par1 ... parn    为命令中可能的参数，以空格隔开。</div></blockqu
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id16">
-<h3>信息存在，但能见度值总为0或满量程<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id17">
+<h3>信息存在，但能见度值总为0或满量程<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>检查输出状态数值是否为接收器故障报警</li>
